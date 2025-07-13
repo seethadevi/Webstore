@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+    <head>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135230544-1"></script>
+            <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-135230544-1', { 'anonymize_ip': true });
+            </script>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <link rel="icon" href="img/favicon/favicon-16x16.png" type="image/png">
+            <title>{{title}}</title>
+            <!-- CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+             <link rel="stylesheet" href="css/stylesheet.css">
+            <!--For Plugins external css-->
+            <link rel="stylesheet" href="css/plugins.css" />
+
+            <!--Theme custom css -->
+            <link rel="stylesheet" href="css/style.css">
+
+            <!--Theme Responsive css-->
+            <link rel="stylesheet" href="css/responsive.css" />
+            <style>
+
+                .cf:before, .cf:after {
+                  content: " ";
+                  display: table;
+                }
+
+                .cf:after {
+                  clear: both;
+                }
+
+                .cf {
+                  *zoom: 1;
+                }
+
+                .wrap {
+                  width: 75%;
+                  max-width: 960px;
+                  margin: 0 auto;
+                  margin-bottom: 5em;
+                }
+
+                .heading {
+                  padding: 1em 0;
+                  border-bottom: 1px solid #D0D0D0;
+                  margin-bottom: 0;
+                }
+                .heading h4 {
+                  float: left;
+                  margin-top: 100px;
+                }
+                .heading a.continue:link, .heading a.continue:visited {
+                  text-decoration: none;
+                  font-family: Montserrat;
+                  letter-spacing: -.015em;
+                  font-size: .75em;
+                  padding: 1em;
+                  color: #fff;
+                  background: #82ca9c;
+                  font-weight: bold;
+                  border-radius: 50px;
+                  float: right;
+                  text-align: right;
+                  -webkit-transition: all 0.25s linear;
+                  -moz-transition: all 0.25s linear;
+                  -ms-transition: all 0.25s linear;
+                  -o-transition: all 0.25s linear;
+                  transition: all 0.25s linear;
+                }
+                .heading a.continue:after {
+                  content: "\276f";
+                  padding: .5em;
+                  position: relative;
+                  right: 0;
+                  -webkit-transition: all 0.15s linear;
+                  -moz-transition: all 0.15s linear;
+                  -ms-transition: all 0.15s linear;
+                  -o-transition: all 0.15s linear;
+                  transition: all 0.15s linear;
+                }
+                .heading a.continue:hover, .heading a.continue:focus, .heading a.continue:active {
+                  background: #f69679;
+                }
+                .heading a.continue:hover:after, .heading a.continue:focus:after, .heading a.continue:active:after {
+                  right: -10px;
+                }
+ 
+
+                .cart {
+                  padding: 1em 0;
+                }
+                .cart .items {
+                  display: block;
+                  width: 100%;
+                  vertical-align: middle;
+                  padding: 1.5em;
+                  border-bottom: 1px solid #fafafa;
+                }
+                .cart .items.even {
+                  background: #fafafa;
+                }
+                .cart .items .infoWrap {
+                  display: table;
+                  width: 100%;
+                }
+                .cart .items .cartSection {
+                  display: table-cell;
+                  vertical-align: middle;
+                }
+                .cart .items .cartSection .itemNumber {
+                  font-size: .75em;
+                  color: #777;
+                  margin-bottom: .5em;
+                }
+                .cart .items .cartSection h3 {
+                  font-size: 1em;
+                  font-family: montserrat;
+                  font-weight: bold;
+                  text-transform: uppercase;
+                  letter-spacing: .025em;
+                }
+                .cart .items .cartSection p {
+                  display: inline-block;
+                  font-size: .85em;
+                  color: #777777;
+                  font-family: montserrat;
+                }
+                .cart .items .cartSection p .quantity {
+                  font-weight: bold;
+                  color: #333;
+                }
+                .cart .items .cartSection p.stockStatus {
+                  color: #82CA9C;
+                  font-weight: bold;
+                  padding: .5em 0 0 0.5em;
+                  text-transform: uppercase;
+                }
+                .cart .items .cartSection p.stockStatus.out {
+                  color: #F69679;
+                }
+                .cart .items .cartSection .itemImg {
+                  width: 4em;
+                  float: left;
+                }
+                .cart .items .cartSection.qtyWrap, .cart .items .cartSection.prodTotal {
+                  text-align: center;
+                }
+                .cart .items .cartSection.qtyWrap p, .cart .items .cartSection.prodTotal p {
+                  font-weight: bold;
+                  font-size: 1.25em;
+                }
+                .cart .items .cartSection input.qty {
+                  width: 3em;
+                  text-align: center;
+                  font-size: 1em;
+                  padding: .25em;
+                  margin: 1em .5em 0 0;
+                }
+                .cart .items .cartSection .itemImg {
+                  display: inline;
+                  padding-right: 1em;
+                }
+
+                .special {
+                  display: block;
+                  font-family: montserrat;
+                }
+                .special .specialContent {
+                  padding: 1em 1em 0;
+                  display: block;
+                  margin-top: .5em;
+                  border-top: 1px solid #dadada;
+                }
+                .special .specialContent:before {
+                  content: "\21b3";
+                  font-size: 1.5em;
+                  margin-right: 1em;
+                  color: #6f6f6f;
+                  font-family: helvetica, arial, sans-serif;
+                }
+
+                a.remove {
+                  text-decoration: none;
+                  font-family: montserrat;
+                  color: #ffffff;
+                  font-weight: bold;
+                  background: #e0e0e0;
+                  padding: .5em;
+                  font-size: .75em;
+                  display: inline-block;
+                  border-radius: 100%;
+                  line-height: .85;
+                  -webkit-transition: all 0.25s linear;
+                  -moz-transition: all 0.25s linear;
+                  -ms-transition: all 0.25s linear;
+                  -o-transition: all 0.25s linear;
+                  transition: all 0.25s linear;
+                }
+                a.remove:hover {
+                  background: #f30;
+                }
+
+                .promoCode {
+                  border: 2px solid #efefef;
+                  float: left;
+                  width: 35%;
+                  padding: 2%;
+                }
+                .promoCode label {
+                  display: block;
+                  width: 100%;
+                  font-style: italic;
+                  font-size: 1.15em;
+                  margin-bottom: .5em;
+                  letter-spacing: -.025em;
+                }
+                .promoCode input {
+                  width: 85%;
+                  font-size: 1em;
+                  padding: .5em;
+                  float: left;
+                  border: 1px solid #dadada;
+                }
+                .promoCode input:active, .promoCode input:focus {
+                  outline: 0;
+                }
+                .promoCode a.btn {
+                  float: left;
+                  width: 15%;
+                  padding: .75em 0;
+                  border-radius: 0 1em 1em 0;
+                  text-align: center;
+                  border: 1px solid #82ca9c;
+                }
+                .promoCode a.btn:hover {
+                  border: 1px solid #f69679;
+                  background: #f69679;
+                }
+
+                .btn:link, .btn:visited, .btn {
+                  text-decoration: none;
+                  font-family: montserrat;
+                  letter-spacing: -.015em;
+                  font-size: 1em;
+                  padding: 1em 3em;
+                  color: #fff;
+                  background: #82ca9c;
+                  font-weight: bold;
+                  border-radius: 50px;
+                  float: right;
+                  text-align: right;
+                  -webkit-transition: all 0.25s linear;
+                  -moz-transition: all 0.25s linear;
+                  -ms-transition: all 0.25s linear;
+                  -o-transition: all 0.25s linear;
+                  transition: all 0.25s linear;
+                }
+                .btn:after {
+                  content: "\276f";
+                  padding: .5em;
+                  position: relative;
+                  right: 0;
+                  -webkit-transition: all 0.15s linear;
+                  -moz-transition: all 0.15s linear;
+                  -ms-transition: all 0.15s linear;
+                  -o-transition: all 0.15s linear;
+                  transition: all 0.15s linear;
+                }
+                .btn:hover, .btn:focus, .btn:active {
+                  background: #f69679;
+                }
+                .btn:hover:after, .btn:focus:after, .btn:active:after {
+                  right: -10px;
+                }
+                .promoCode .btn {
+                  font-size: .85em;
+                  paddding: .5em 2em;
+                }
+
+                /* TOTAL AND CHECKOUT  */
+                .subtotal {
+                  float: right;
+                  width: 35%;
+                }
+                .subtotal .totalRow {
+                  padding: .5em;
+                  text-align: right;
+                }
+                .subtotal .totalRow.final {
+                  font-size: 1.25em;
+                  font-weight: bold;
+                }
+                .subtotal .totalRow span {
+                  display: inline-block;
+                  /*padding: 0 0 0 1em;*/
+                  text-align: right;
+                }
+                .subtotal .totalRow .label {
+                  font-family: montserrat;
+                  font-size: .85em;
+                  text-transform: uppercase;
+                  color: #777;
+                }
+                .subtotal .totalRow .value {
+                  letter-spacing: .025em;
+                  width: 35%;
+                }
+
+                @media only screen and (max-width: 39.375em) {
+                  .wrap {
+                    width: 98%;
+                    padding: 2% 0;
+                  }
+
+                  .heading {
+                    padding: 1em;
+                    font-size: 90%;
+                  }
+                  .heading h4{
+                    font-size: 1.5rem;
+                  }
+
+                  .cart .items {
+                    padding: 0.5em;
+                  }
+
+                  .cart .items .cartSection.qtyWrap p, .cart .items .cartSection.prodTotal p {
+                    font-weight: bold;
+                    font-size: 0.9em;
+                  }
+
+                  .cart .items .cartSection {
+                    width: 75%;
+                    display: block;
+                    float: left;
+                  }
+                  .cart .items .cartSection.prodTotal {
+                    width: 25%;
+                    float: right;
+                  }
+                  .cart .items .cartSection.removeWrap {
+                    width: 10%;
+                    float: right;
+                    padding-top: 10%;
+                  }
+                  .cart .items .cartSection.qtyWrap {
+                    width: 10%;
+                    text-align: center;
+                    padding: .5em 0;
+                    float: right;
+                  }
+                  .cart .items .cartSection.qtyWrap:before {
+                    content: "QTY";
+                    display: block;
+                    font-family: montserrat;
+                    padding: .25em;
+                    font-size: .75em;
+                  }
+                  /* .cart .items .cartSection.prodTotal, .cart .items .cartSection.removeWrap {
+                    display: none;
+                  } */
+                  .cart .items .cartSection .itemImg {
+                    padding-right: 0.5em;
+                  }
+
+                  .promoCode, .subtotal {
+                    width: 100%;
+                  }
+
+                  a.btn.continue {
+                    width: 100%;
+                    text-align: center;
+                  }
+                  .subtotal .totalRow{
+                    padding-right: 1.5em;
+                  }
+                }
+
+                .topSpace{
+                    margin-top: 15px;
+                }
+
+                .imageAlign{
+                    max-width:  200px;
+                    display: block;
+                    margin: auto;
+                }
+            </style>
+    </head>
+    <body class="d-flex flex-column h-100">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+            <button class="navbar-toggler" type="button" onclick="$.triggerNavAction();" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand title pointer" href="https://www.fermynt.com/" target="_blank">Fermynt</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/listofproducts">Des produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/userprofile">Mon profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/orders">Vos commandes</a>
+                    </li>
+                    <li class="nav-item active" id="btnGoToShoppingCart1" style="display:none">
+                        <a class="nav-link" href="#">Mon panier <span class="badge badge-light" id="totalCartItem1"></span> <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="#" onclick="$.Logout();">Déconnexion</a>
+                    </li>
+                </ul>
+            </div>
+            <a class="navbar-band cart pointer" id="btnGoToShoppingCart">
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                <span class="badge badge-light" id="totalCartItem"></span>
+            </a>
+        </nav>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="wrap cf">
+          <div class="heading cf">
+            <h4>Mon panier</h4>
+          <a href="./listofproducts" class="continue" style="margin-top: 100px;">Continuer vos achats</a>
+          </div>
+          <div class="cart">
+            <ul class="cartWrap" id='listOfCartItems'>
+            </ul>
+          </div>
+
+          <div id="showEmptyMsg" class="text-center hideClass">
+            <img src='img/cart.png' alt="Empty Cart" />&nbsp;&nbsp;Votre panier est vide.
+          </div>
+
+
+          <div class="subtotal cf">
+            <ul>
+                <li class="totalRow final"><span class="label">Total</span><span class="value"><i class="fa fa-eur" aria-hidden="true"></i> <span id='displayTotalCartValue'></span></span></li>
+                <li class="totalRow"><button href="#" class="btn continue" id='checkoutOrder'>Finaliser ma commande</button></li>
+            </ul>
+          </div>
+        </div>
+        <!-- <div id="overlay"></div>
+        <div id="ajaxLoading">
+            <img class="Loading_Image" src="img/ajax-loader.gif">
+        </div> -->
+
+        <div id="snackbar"></div>
+        <!--Added to show cart update msg -->
+        <!--Footer Starts-->
+        <footer>
+          <div class="container-fluid">
+              <p class="copyright text-center">
+                  <a href="https://termsfeed.com/privacy-policy/aea4db6907ef44383eb4b76f91cfc93f" target="_blank" alt="Privacy Policy"> Privacy Policy </a> &nbsp;|&nbsp;
+                  <a href="https://termsfeed.com/cookies-policy/fa83048ce1055200471400cdcf5c93c0" target="_blank" alt="Privacy Policy"> Cookies Policy </a><br/>
+                    Copyright  &copy; <script>document.write((new Date()).getFullYear())</script>  <a id="fermynt" href="https://www.fermynt.com">fermynt</a>, All rights reserved.
+                </p>
+            </div>
+        </footer>
+        <!--Footer Ends-->
+ <button type="button" class="btn btn-primary" id="btnPopup" data-toggle="modal" data-target="#myModal" style="display: none">
+      Open modal
+  </button>
+         <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" id="modelTitle"></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body" id="modalMsg">
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="btnCloseModal" data-dismiss="modal">Ok</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.0/src/js.cookie.min.js"></script>
+        <script src="js/appconst.js"></script>
+        <script src="js/winespec.js"></script>
+        <script>
+            // $( document ).ajaxStart(function() {
+            //     $( "#overlay, #ajaxLoading" ).show();
+            // });
+            // $( document ).ajaxStop(function() {
+            //     $( "#overlay, #ajaxLoading" ).hide();
+            // });
+            $(document).ready(function(){
+                let shopId = !!$.getParam('shopid') ? $.getParam('shopid') : '';
+                if(!shopId){
+                  $.setParam('errorcode','error2');
+                  window.location.href = 'msg';
+                  return false;
+                }
+                if(!$.getParam('customerid')) {
+                  $.setParam('errorcode','error5');
+                  $.setParam('pagelink','/?shopid='+shopId);
+                  window.location.href = 'msg';
+                  return false;
+                }
+                $.setParam('timer','');
+                let cartItems = !!$.getParam('cartItem') ? JSON.parse($.getParam('cartItem')): [];
+                if(cartItems.length === 0){
+                    $('#totalCartItem').html('0');
+                    $('#totalCartItem1').html('0');
+                    $('#listOfCartItems').html('');
+                    $('#showEmptyMsg').removeClass('hideClass');
+                    $('.subtotal').hide();
+                    return false;
+                } else {
+                  $('#totalCartItem').html(cartItems.length);
+                  $('#totalCartItem1').html(cartItems.length);
+                  $('#showEmptyMsg').addClass('hideClass');
+                  $('.subtotal').show();
+                  updateCart();
+                }
+
+                if((!!$.getParam('title') && $.getParam('title') !== "undefined" && $.getParam('title') !== "null") &&
+                (!!$.getParam('eventImage') && $.getParam('eventImage') !== "undefined" && $.getParam('eventImage') !== "null")){
+                     $(document).prop('title', $.getParam('title'));
+                } else {
+                    if(!!$.getParam('shopid') && $.getParam('shopid') !== "undefined" && $.getParam('shopid') !== "null"){
+                        $.ajax({
+                            url: app.serverAPI + '/shop/details/'+$.getParam('shopid'),
+                            type: 'GET',
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            success: function(response){
+                                if(response.status === 'success'){
+                                    let eventName = (response.msg.name.toUpperCase()).replace(/AND/g, '&');
+                                    $(document).prop('title', eventName);
+                                    $.setParam('title', eventName);
+                                    if(!!response.msg.picture){
+                                        $.setParam('eventImage',response.msg.picture['sm']);
+                                    } else {
+                                        $.setParam('eventImage','');
+                                    }
+                                }
+                            }, error: function(xhr, status, error) {
+                                if(!!xhr.responseJSON){
+                                  alertMsg(xhr.responseJSON.msg);
+                                } else {
+                                  alertMsg(xhr.responseText);
+                                }
+                            }
+                        });
+                    }
+                }
+
+                function updateCart(){
+                    let cartHtml = '';
+                    let totalCartValue = 0;
+                    if(!cartItems.length) {
+                      $('#totalCartItem').html('0');
+                      $('#totalCartItem1').html('0');
+                      $('#listOfCartItems').html('');
+                      $('#showEmptyMsg').removeClass('hideClass');
+                      $('.subtotal').hide();
+                      return false;
+                    }
+                    $.each(cartItems, function (index,item) {
+                        if( (index+1) % 2 === 0) {
+                            cartHtml += '<li class="items even">';
+                        } else {
+                            cartHtml += '<li class="items odd">';
+                        }
+                        const totalPrice = (parseFloat(item.price).toFixed(2) * parseInt(item.qty)).toFixed(2);
+                        totalCartValue = totalCartValue + parseFloat(totalPrice);
+                        const price = parseFloat(item.price).toFixed(2);
+                        cartHtml += '<div class="infoWrap">'
+                        // cartHtml += '<div class="cartSection">';
+                       //  cartHtml += '<p class="itemNumber">#'+ (index +1) +'</p>';
+                        // cartHtml += '</div>';
+                        cartHtml += '<div class="cartSection">';
+                        cartHtml += '<img src="'+item.picture+'" alt="'+item.name+'" class="itemImg" />';
+                        cartHtml += '<h3>'+item.name+'</h3>';
+                        cartHtml += '<p> <input type="text"  data-id="'+index+'" class="qty txtQty" value="'+item.qty+'"/> x <i class="fa fa-eur" aria-hidden="true"></i>'+price+'</p>';
+                        cartHtml += '<p class="stockStatus"> In Stock</p>';
+                        cartHtml += '</div>';
+                        cartHtml += '<div class="prodTotal cartSection">';
+                        cartHtml += '<p><i class="fa fa-eur" aria-hidden="true"></i> '+totalPrice+'</p>';
+                        cartHtml += '&nbsp;<a href="#" class="remove" data-id="'+index+'"  data-prodid="'+item.id+'">x</a>';
+                        cartHtml += '</div>';
+                        // cartHtml += '<div class="cartSection removeWrap">';
+                        // cartHtml += '<a href="#" class="remove">x</a>';
+                        // cartHtml += '</div>';
+                        cartHtml += '</div>';
+                        cartHtml += '</li>';
+                        if(index === (cartItems.length -1)){
+                            $('#listOfCartItems').html(cartHtml);
+                            $('#displayTotalCartValue').html(totalCartValue.toFixed(2));
+                            triggerclick();
+                        }
+                    });
+                }
+
+                    function triggerclick(){
+                      $('.txtQty').on('focusout', function(event) {
+                        let value = event.target.value;
+                        let id= $(event.target).attr('data-id');
+                        if(parseInt(value) > 6){
+                          $.showPopupMsg('Maximum 6 quantité par produit');
+                        } else if(parseInt(value) <= 0){
+                          $.showPopupMsg('Veuillez fournir une quantité supérieure à zéro');
+                        } else {
+                           cartItems[id]['qty'] =  value;
+                          $.setParam('cartItem',JSON.stringify(cartItems));
+                        }
+                         updateCart();
+                      });
+
+                      $('.remove').on('click', function() {
+                        let rowId= $(event.target).attr('data-id');
+                        cartItems.splice(rowId, 1);
+                        $.setParam('cartItem',JSON.stringify(cartItems));
+                        $('#totalCartItem').html(cartItems.length);
+                        $('#totalCartItem1').html(cartItems.length);
+                        updateCart();
+                      });
+                    }
+
+                    $('#btnGoToShoppingCart, #btnGoToShoppingCart1').on('click', function() {
+                        const cartItems = !!$.getParam('cartItem') ? JSON.parse($.getParam('cartItem')): [];
+                        if(cartItems.length === 0){
+                            return false;
+                        } else {
+                            window.location.href = 'cart';
+                        }
+                    });
+
+                    $('#checkoutOrder').on('click', function(){
+                      let totalAmt = parseFloat($('#displayTotalCartValue').html());
+                      if(totalAmt === 0){
+                        return false;
+                      }
+                         let orderParam = {};
+                         orderParam['shop_id'] =shopId;
+                         orderParam['customer_id']=  $.getParam('customerid'),
+                         orderParam['totalAmount'] = $('#displayTotalCartValue').html();
+                         orderParam['channel'] = 'WEBSHOP';
+                         orderParam['order_items'] = [];
+                         $.each(cartItems, function (index,item) {
+                             const uItem = {
+                                    "prod_id" : item.prod_id,
+                                    "qty" : parseInt(item.qty)
+                            };
+                            orderParam['order_items'].push(uItem);
+                         });
+                         // console.log("orderParam", orderParam);
+                        $.ajax({
+                        url: app.serverAPI + '/cart',
+                        data: JSON.stringify(orderParam),
+                        type: 'POST',
+                        headers: {
+                            'Authorization': 'DWS-TOKEN '+$.getParam('auth'),
+                            'channel':'WEB',
+                        },
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function(response){
+                            if( response.status === app.success) {
+                                $.setParam('orderid', response.msg);
+                                $.removeParam('cartItem');
+                                window.location.href = '/qrpage';
+                            } else {
+                              alertMsg(response.msg);
+                            }
+                        }, error: function(xhr, status, error) {
+                          if(!!xhr.responseJSON){
+                            alertMsg(xhr.responseJSON.msg);
+                          } else {
+                            alertMsg(xhr.responseText);
+                          }
+                                // alert(error);
+                            // $.setParam('errorcode','error1');
+                            // $.setParam('pagelink',window.location.href);
+                            // window.location.href = 'msg.html';
+                          }
+
+                        });
+                    });
+
+                    function alertMsg(msg ,title) {
+                      $('#modalMsg').html(msg);
+                      if(!!title) {
+                          $('#modelTitle').html(title);
+                      } else {
+                          $('#modelTitle').html('Alerte');
+                      }
+                      document.getElementById('btnPopup').click();
+
+                      setTimeout(function(){
+                          document.getElementById('btnCloseModal').click();
+                      }, 3000);
+                  }
+            });
+        </script>
+    </body>
+</html>

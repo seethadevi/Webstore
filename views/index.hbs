@@ -1,0 +1,710 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135230544-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-135230544-1',  { 'anonymize_ip': true });
+        </script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="img/favicon/favicon-16x16.png" type="image/png">
+
+
+        <link rel="stylesheet" href="/css/fonticons.css">
+        <link rel="stylesheet" href="/css/stylesheet.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+        <!--For Plugins external css-->
+        <link rel="stylesheet" href="/css/plugins.css" />
+
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/login.css">
+
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" href="/css/responsive.css" />
+
+    </head>
+    <body class="d-flex flex-column h-100">
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100" id="loginContainer">
+                    <form class="login100-form validate-form">
+                        {{!-- <span class="login100-form-title p-b-26">Welcome</span> --}}
+                        <span class="login100-form-title p-b-48">
+                            {{!-- <i class="zmdi zmdi-font"></i> --}}
+                            {{!-- Fermynt --}}
+                            <img src="" id="eventImage" alt="eventLogo" />
+                            <div style="font-size: 0.7rem;font-style: italic;padding-left: 35px;">by&nbsp;&nbsp;<a  href="https://www.fermynt.com/" target="_blank"><img src="img/logo_new_black.png" alt="Fermynt" style="max-width: 30%;"/></a></div>
+                        </span>
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+                        <input class="input100" type="text" name="user_login" id="user_login" required>
+                        <span class="focus-input100 form-control-placeholder" data-placeholder="EMAIL *"></span>
+                    </div>
+                    <div class="wrap-input100 validate-inpu changeMBt" data-validate="Enter password">
+                        <span class="btn-show-pass">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </span>
+                        <input class="input100" type="password"name="user_password" id="user_password" required>
+                        <label class="focus-input100 form-control-placeholder" data-placeholder="MOT DE PASSE *"></label>
+                    </div>
+                    <div class="alert" id="alertMsgText1" style="display:none"></div>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <button id='btnSignIn' class="login100-form-btn">Entrer</button>
+                        </div>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <button  id="lnkSingUp"class="login100-form-btn">Enregistrer</button>
+                        </div>
+                    </div>
+                    {{!-- <div class="omniauth-container prepend-top-15">
+                        <label class="label-bold d-block"> Sign in with </label>
+                        <div class="d-flex justify-content-between flex-wrap">
+                            <a class="btn d-flex align-items-center omniauth-btn text-left oauth-login qa-saml-login-button" id="oauth-login-facebook">
+                                <div class="fb-login-button" data-scope="public_profile,email"  auth_type: 'reauthenticate'  data-onlogin="checkLoginState()" data-size="small" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                            </a>
+                            <a class="btn d-flex align-items-center omniauth-btn text-left oauth-login qa-saml-login-button" id="oauth-login-twitter">
+                                <i alt="Twitter" title="Sign in with Twitter" class="js-lazy-loaded" src="img/auth/twitter.png">
+                                <span> Twitter </span>
+                            </a>
+                        </div>
+                    </div> --}}
+                    {{!-- <div class="text-center p-t-115">
+                        <span class="txt1">
+                        Don’t have an account?
+                        </span>
+                        <a class="txt2 pointer">Sign Up</a>
+                    </div> --}}
+                     <div class="text-center p-t-115">
+                        <a class="txt2 pointer" id="lnkForgotpwd">Mot de passe oublié</a>
+                    </div>
+                    </form>
+                </div> <!-- Login contaioner ends here-->
+
+
+                <div class="wrap-login100" id="registerContainer" style="opacity:0;display:none">
+                    <form class="login100-form validate-form">
+                        {{!-- <span class="login100-form-title p-b-26">Welcome</span> --}}
+                        <span class="login100-form-title p-b-48">
+                            {{!-- <i class="zmdi zmdi-font"></i> --}}
+                            Fermynt
+                        </span>
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="text" name="new_user_firstname" id="new_user_firstname" required>
+                        <span class="focus-input100 form-control-placeholder" data-placeholder="PRENOM *"></span>
+                    </div>
+                    <div class="wrap-input100 validate-inpu changeMBt">
+                        <input class="input100" type="text" name="new_user_lastname" id="new_user_lastname" required>
+                        <label class="focus-input100 form-control-placeholder" data-placeholder="NOM *"></label>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+                        <input class="input100" type="text" name="new_user_email" id="new_user_email" required>
+                        <span class="focus-input100 form-control-placeholder" data-placeholder="EMAIL *"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input changeMBt" data-validate="Password">
+                        <input class="input100" type="password" name="new_user_password" id="new_user_password" required>
+                        <label class="focus-input100 form-control-placeholder" data-placeholder="MOT DE PASSE *"></label>
+                    </div>
+                    <div class="wrap-input100 validate-input changeMBt" data-validate="Password">
+                        <input class="input100" type="password" name="new_user_password_confirm" id="new_user_password_confirm" required>
+                        <label class="focus-input100 form-control-placeholder" data-placeholder="CONFIRMEZ LE MOT DE PASSE *"></label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check" style="font-size: 0.7rem;">
+                            <input type="checkbox" class="form-check-input" id="new_user_Checkbox1" style="    margin-top: 8px;">
+                            <label class="form-check-label" for="new_user_Checkbox1">J’accepte la
+                                    <a href="https://termsfeed.com/privacy-policy/aea4db6907ef44383eb4b76f91cfc93f" target="_blank">Politique de confidentialité</a>
+                                    et de <a href="https://termsfeed.com/cookies-policy/fa83048ce1055200471400cdcf5c93c0" target="_blank">cookies</a></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check" style="font-size: 0.7rem;">
+                            <input type="checkbox" class="form-check-input" id="new_user_Checkbox2" style="    margin-top: 8px;">
+                            <label class="form-check-label" for="new_user_Checkbox2">J’accepte de recevoir des informations et actualités de fermynt et de ses partenaires</label>
+                        </div>
+                    </div>
+                    {{!-- <div class="form-group login-checkbox">
+                        <input type="checkbox" id="new_user_email_opted_in" style="margin: 5px;" checked>
+                            <!-- Hereby you agree to optin for recieving newsletters via email,mobile and letter -->
+                            The <a id="fermynt" href="https://www.fermynt.com">fermynt</a> of company may keep me informed with personalized emails about products and services.
+                    </div> --}}
+                    <div class="alert" id="alertMsgText" style="display:none"></div>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button id='btnRegister' class="login100-form-btn"><i class="fa fa-spinner fa-spin" id="btnLoading"  style="display: none"></i>&nbsp;&nbsp; Enregistrer</button>
+                        </div>
+                    </div>
+                    {{!-- <div class="text-center p-t-115">
+                        <span class="txt1">
+                        Don’t have an account?
+                        </span>
+                        <a class="txt2 pointer" id="lnkSingIn">Sign In</a>
+                    </div> --}}
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <button id='lnkSingIn' class="login100-form-btn">Entrer</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="btnPopup" data-toggle="modal" data-target="#myModal" style="display: none">
+            Open modal
+        </button>
+
+         <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                <h4 class="modal-title" id="modelTitle"></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body" id="modalMsg">
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnCloseModal" data-dismiss="modal">Ok</button>
+                </div>
+
+            </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container-fluid">
+                <p class="copyright text-center">
+                    <a href="https://termsfeed.com/privacy-policy/aea4db6907ef44383eb4b76f91cfc93f" target="_blank" alt="Privacy Policy"> Privacy Policy </a> &nbsp;|&nbsp;
+                    <a href="https://termsfeed.com/cookies-policy/fa83048ce1055200471400cdcf5c93c0" target="_blank" alt="Privacy Policy"> Cookies Policy </a><br/>
+                    Copyright  &copy; <script>document.write((new Date()).getFullYear())</script>  <a id="fermynt" href="https://www.fermynt.com">fermynt</a>, All rights reserved.
+                </p>
+            </div>
+        </footer>
+        <div id="fb-root"></div>
+        <!--Footer Ends-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.0/src/js.cookie.min.js"></script>
+        <script src="js/appconst.js"></script>
+        <script src="js/errorcode.js"></script>
+        {{!-- <script>
+            fbAsyncInit = function() {
+                window.FB.init({
+                appId      : '2248107898810285',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v3.2'
+                });
+                FB.AppEvents.logPageView();
+                /*if(!!$.getParam('FB_TOKEN')){
+                    FB.logout(JSON.parse($.getParam('FB_TOKEN')));
+                }*/
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk.js';
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+
+
+                function checkLoginState() {
+                FB.getLoginStatus(function(response) {
+                    statusChangeCallback(response);
+                });
+                }
+
+                function statusChangeCallback(response){
+                if (response.status === 'connected') {
+                    $.setParam('FB_TOKEN',JSON.stringify(response.authResponse));
+                    // console.log('Welcome!  Fetching your information.... ');
+                    FB.api('/me?fields=name,picture,email', function(response) {
+                    //   console.log('Successful login for: ' , response);
+                        const userObject = {
+                            First_Name: (response['name']).split(' ')[0],
+                            Last_Name: (response['name']).split(' ')[1],
+                            Full_Name: response['name'],
+                            Email: response['email'].toLowerCase(),
+                            gdpr: 'TRUE',
+                            type: 'CUSTOMER',
+                            firstname : (response['name']).split(' ')[0],
+                            lastname : (response['name']).split(' ')[1],
+                            password: response['email'].toLowerCase(),
+                            email: response['email'].toLowerCase(),
+                            picture: response['picture'],
+                            isSocial: "TRUE",
+                            contactSource: 'FACEBOOK',
+                            sub_id: $.getParam('subid'),
+                            shop_id: $.getParam('shopid')
+                        };
+                        checkUserExistornot(userObject);
+                    });
+                }else{
+                        console.log('I am here with ', response);
+                }
+                }
+            </script> --}}
+                <script>
+                    $(document).ready(function(){
+                        let shopId = !!$.urlParam('shopid') ? $.urlParam('shopid') : '';
+                        let sub_id = !!$.urlParam('sub_id') ? $.urlParam('sub_id') : '';
+                        $('#user_login').val(''); // EMPTY THE VALUE
+                        //Clear session values
+                        $.setParam('auth','');
+                        $.removeParam('auth');
+                        $.setParam('customerid','');
+                        $.removeParam('customerid');
+                        $.setParam('cartItem','');
+                        $.removeParam('cartItem');
+                        $.setParam('user','');
+                        $.removeParam('user');
+                        $.setParam('orderid','');
+                        $.removeParam('orderid');
+                        $.setParam('errorcode','');
+                        $.removeParam('errorcode');
+                        $.setParam('pagelink','');
+                        $.removeParam('pagelink');
+                        $.setParam('timer','');
+                        $.removeParam('pagelink');
+
+                        if((!shopId || shopId === "undefined" || shopId === "null") || (!sub_id || sub_id === "undefined" || sub_id === "null")) {
+                            $.setParam('errorcode','error2');
+                            window.location.href = 'msg';
+                        } else {
+                            $.setParam('shopid', shopId);
+                            $.setParam('subid', sub_id);
+                            $.ajax({
+                            url: app.serverAPI + '/shop/details/'+shopId,
+                            type: 'GET',
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            success: function(response){
+                                if(response.status === 'success'){
+                                    let eventName = (response.msg.name.toUpperCase()).replace(/AND/g, '&');
+                                    $(document).prop('title', eventName);
+                                    $.setParam('title', eventName);
+                                    if(!!response.msg.picture){
+                                        $.setParam('eventImage',response.msg.picture['sm']);
+                                        $('#eventImage').attr('src', response.msg.picture['sm']);
+                                    } else {
+                                        $.setParam('eventImage','');
+                                    }
+                                }
+                            }, error: function(xhr, status, error) {
+                                let msg = '';
+                                if(xhr.responseJSON) {
+                                    msg = xhr.responseJSON.msg;
+                                } else {
+                                    msg = appErrorcode['error10'];
+                                }
+                                alert(msg);
+                            }
+                        });
+                        }
+
+                        $('#btnSignIn').on('click', function(){
+                            if( $('#user_login').val()  === ''){
+                                alertMsgText1('Email obligatoire', 'alert-warning');
+                                $('#user_login').focus();
+                                return false;
+                            }
+                            if( $('#user_password').val()  === ''){
+                                alertMsgText1('Mot de passe obligatoire', 'alert-warning');
+                                $('#user_password').focus();
+                                return false;
+                            }
+                            const userObject ={
+                                email: $('#user_login').val().toLowerCase(),
+                                password: $('#user_password').val(),
+                            };
+                            loginService(userObject);
+                            return false;
+                        });
+
+                        $('#user_password').on("keypress", function(e) {
+                            if (e.keyCode == 13) {
+                                if( $('#user_login').val()  === ''){
+                                    alertMsgText1('Email obligatoire', 'alert-warning');
+                                    $('#user_login').focus();
+                                    return false;
+                                }
+                                if( $('#user_password').val()  === ''){
+                                    alertMsgText1('Mot de passe obligatoire', 'alert-warning');
+                                    $('#user_password').focus();
+                                    return false;
+                                }
+                                const userObject ={
+                                    email: $('#user_login').val().toLowerCase(),
+                                    password: $('#user_password').val(),
+                                    sub_id: $.getParam('subid'),
+                                    shop_id: $.getParam('shopid')
+                                };
+                                loginService(userObject);
+                                return false;
+                            }
+                        });
+
+
+                        $('#new_user_password').on("keypress", function(e) {
+                            if (e.keyCode == 13) {
+                                // TODO AJAX call of search
+                                userRegister();
+                                return false;
+                            }
+                        });
+
+                        $('#btnRegister').on('click', function(){
+                            userRegister();
+                            return false;
+                        });
+
+                        $('#lnkSingUp').on('click', function(){
+                            $('#registerContainer').css('display','block');
+                            $('#loginContainer').css('display','none');
+                            $('#loginContainer').animate({opacity: 0});
+                            $('#registerContainer').animate( { opacity: 1 });
+                            $('#new_user_firstname').focus();
+                            return false;
+                        });
+
+                        $('#lnkForgotpwd').on('click', function(){
+                            window.location.href="/forgotpwd";
+                        });
+
+                        $('#lnkSingIn').on('click', function(){
+                            $('#registerContainer').css('display','none');
+                            $('#loginContainer').css('display','block');
+                            $('#loginContainer').animate({opacity: 1});
+                            $('#registerContainer').animate( { opacity: 0 });
+                            return false;
+                        });
+
+                        function loginService(userObject){
+                            $.ajax({
+                                url: app.serverAPI + '/customer/authenticate',
+                                data: JSON.stringify(userObject),
+                                type: 'POST',
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                success: function(response){
+                                    if(response.status === app.success){
+                                        $.setParam('auth', response.session_id);
+                                        $.setParam('user', response.user);
+                                        $.setParam('customerid', response.user._id);
+                                        if(!!$.getParam('redirectURLLogin')){
+                                                window.location.href= $.getParam('redirectURLLogin');
+                                        }else{
+                                                window.location.href= '/listofproducts';
+                                        }
+                                    } else {
+                                        alert(response.msg);
+                                    }
+                                }, error: function(xhr, status, error) {
+                                    let msg = '';
+                                    if(xhr.responseJSON) {
+                                        msg = xhr.responseJSON.msg;
+                                    } else {
+                                        msg = appErrorcode['error10'];
+                                    }
+                                    alert(msg);
+                                }
+                            });
+                        }
+
+                        function alertMsgText(msg, className) {
+                            $('#alertMsgText').css('display','block');
+                            $('#alertMsgText').html(msg);
+                            $('#alertMsgText').removeClass('alert-warning alert-success alert-info alert-danger').addClass(className);
+                        }
+
+                        function alertMsgText1(msg, className) {
+                            $('#alertMsgText1').css('display','block');
+                            $('#alertMsgText1').html(msg);
+                            $('#alertMsgText1').removeClass('alert-warning alert-success alert-info alert-danger').addClass(className);
+                        }
+
+                        function userRegister(){
+                            let gdpr, accept_mail;
+                            if($('#new_user_firstname').val() === ''){
+                                $('#new_user_firstname').focus();
+                                alertMsgText('Prénom obligatoire', 'alert-warning');
+                                return false;
+                            }
+
+                            if($('#new_user_lastname').val() === ''){
+                                $('#new_user_lastname').focus();
+                                alertMsgText('Nom obligatoire', 'alert-warning');
+                                return false;
+                            }
+
+                            if($('#new_user_email').val() === ''){
+                                $('#new_user_email').focus();
+                                alertMsgText('Email obligatoire', 'alert-warning');
+                                return false;
+                            }
+
+                            if($('#new_user_password').val() === ''){
+                                $('#new_user_password').focus();
+                                alertMsgText('Mot de passe obligatoire', 'alert-warning');
+                                return false;
+                            }
+                            if($('#new_user_password_confirm').val() === ''){
+                                $('#new_user_password_confirm').focus();
+                                alertMsgText('Confirmez le mot de passe obligatoire', 'alert-warning');
+                                return false;
+                            }
+
+                            if($('#new_user_password').val() !== $('#new_user_password_confirm').val()) {
+                                $('#new_user_password').focus();
+                                alertMsgText('Mot de passe et confirmer le mot de passe doit être identique', 'alert-warning');
+                                return false;
+                            }
+                            if($("input[type='checkbox'][id='new_user_Checkbox1']:checked").length == 1) {
+                                gdpr = 'TRUE';
+                            } else {
+                                gdpr = 'FALSE';
+                            }
+
+                            if (gdpr === 'FALSE') {
+                                alertMsgText('Pour vous enregistrer, merci de cocher la case  "accepter la politique de confidentialité"', 'alert-warning');
+                                return false;
+                            }
+
+                            if($("input[type='checkbox'][id='new_user_Checkbox2']:checked").length == 1) {
+                                accept_mail = 'TRUE';
+                            } else {
+                                accept_mail = 'FALSE';
+                            }
+                            $('#alertMsgText').css('display','hide');
+                            $("#btnRegister").attr("disabled", "disabled");
+                            $('#btnLoading').css('display','inline-block');
+                        const userObject ={
+                                First_Name: $('#new_user_firstname').val(),
+                                Last_Name: $('#new_user_lastname').val(),
+                                Full_Name: $('#new_user_firstname').val() +' '+ $('#new_user_lastname').val(),
+                                Email: $('#new_user_email').val().toLowerCase(),
+                                gdpr: gdpr,
+                                isAgree: accept_mail,
+                                type: 'CUSTOMER',
+                                firstname: $('#new_user_firstname').val(),
+                                lastname: $('#new_user_lastname').val(),
+                                email: $('#new_user_email').val().toLowerCase(),
+                                password: $('#new_user_password').val(),
+                                isSocial: 'FALSE',
+                                contactSource: 'FERMYNT',
+                                sub_id: $.getParam('subid'),
+                                shop_id: $.getParam('shopid')
+                            };
+                            $.ajax({
+                            url: app.serverAPI + '/customer/checkCustomer',
+                            data: JSON.stringify({email: userObject.email}),
+                            type: 'POST',
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                                success: function(response){
+                                    if(response.status === app.success){
+                                        alertMsg('Le client existe déjà');
+                                    } else {
+                                        alertMsg(response.msg);
+                                    }
+                                    $("#btnRegister").removeAttr("disabled");
+                                    $('#btnLoading').css('display','none');
+                                }, error: function(xhr, status, error) {
+                                    if(xhr.responseJSON.msg ===  'No Customer Found' ) {
+                                        // alert('here');
+                                        $.ajax({
+                                        url: app.serverAPI + '/contacts',
+                                        data: JSON.stringify(userObject),
+                                        type: 'POST',
+                                        contentType: 'application/json; charset=utf-8',
+                                        dataType: 'json',
+                                            success: function(response){
+                                                if(response.status === app.success){
+                                                    alertMsgText('enregistré avec succès','alert-success');
+                                                    const userLoginObject ={
+                                                        email: userObject.Email,
+                                                        password: userObject.password,
+                                                    };
+                                                    loginService(userLoginObject);
+                                                    $('#new_user_firstname').val('');
+                                                    $('#new_user_lastname').val('');
+                                                    $('#new_user_email').val('');
+                                                    $('#new_user_password').val('');
+                                                    $('#new_user_password_confirm').val('');
+                                                    /*$.setParam('errorcode', 'error7');
+                                                    $.setParam('pagelink', window.location.href);
+                                                    window.location.href= 'msg';*/
+                                                } else {
+                                                    alertMsg(response.msg || appErrorcode['error8']);
+                                                }
+                                                $("#btnRegister").removeAttr("disabled");
+                                                $('#btnLoading').css('display','none');
+                                            }, error: function(xhr, status, error) {
+                                                $("#btnRegister").removeAttr("disabled");
+                                                $('#btnLoading').css('display','none');
+                                                let msg = '';
+                                                if(!!xhr.responseJSON && !!xhr.responseJSON.msg) {
+                                                    msg = xhr.responseJSON.msg;
+                                                } else {
+                                                    msg =appErrorcode['error8'];
+                                                }
+                                                alertMsg(msg);
+                                            }
+
+                                        });
+                                    }else {
+                                        $("#btnRegister").removeAttr("disabled");
+                                        $('#btnLoading').css('display','none');
+                                        let msg = '';
+                                        if(!!xhr.responseJSON && !!xhr.responseJSON.msg) {
+                                            msg = xhr.responseJSON.msg;
+                                        } else {
+                                            msg = 'Error';
+                                        }
+                                        alertMsg(msg);
+                                    }
+                                }
+                            });
+                        }
+                        function alertMsg(msg ,title) {
+                            $('#modalMsg').html(msg);
+                            if(!!title) {
+                                $('#modelTitle').html(title);
+                            } else {
+                                $('#modelTitle').html('Alerte');
+                            }
+                            document.getElementById('btnPopup').click();
+
+                            setTimeout(function(){
+                                document.getElementById('btnCloseModal').click();
+                            }, 20000);
+                        }
+                    });
+        </script>
+        {{!-- <script>
+            function saveNewUserSocial(userObject) {
+                $.ajax({
+                    url: app.serverAPI + '/contacts',
+                    data: JSON.stringify(userObject),
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function(response){
+                            if(response.status === app.success){
+                            $.setParam('auth', response.session_id);
+                            $.setParam('user', JSON.stringify(response.user));
+                            $.setParam('customerid', response.user._id);
+                            window.location.href = 'listofproducts';
+                            } else {
+                            alert(response.msg || appErrorcode['error9']);
+                            }
+                    }, error: function(xhr, status, error) {
+                        alert(xhr.responseJSON.msg || appErrorcode['error9']);
+                    }
+
+                });
+            }
+
+            function checkUserExistornot(userObject) {
+                $.ajax({
+                url: app.serverAPI + '/customer/checkCustomer',
+                data: JSON.stringify({email: userObject.email}),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                    success: function(response){
+                        if(response.status === app.success){
+                             loginServiceSocial(userObject);
+                        } else {
+                            alert(response.msg);
+                        }
+                    }, error: function(xhr, status, error) {
+                        if(xhr.responseJSON.msg ===  'No Customer Found' ) {
+                            // alert('here');
+                            saveNewUserSocial(userObject);
+                        }else {
+                            alert(xhr.responseJSON.msg);
+                        }
+                    }
+                });
+            }
+            function loginServiceSocial(userObject){
+                $.ajax({
+                    url: app.serverAPI + '/customer/authenticate',
+                    data: JSON.stringify(userObject),
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function(response){
+                        if(response.status === app.success){
+                            $.setParam('auth', response.session_id);
+                            $.setParam('user', response.user);
+                            $.setParam('customerid', response.user._id);
+                            if(!!$.getParam('redirectURLLogin')){
+                                    window.location.href= $.getParam('redirectURLLogin');
+                            }else{
+                                    window.location.href= '/listofproducts';
+                            }
+                        } else {
+                            alert(response.msg);
+                        }
+                    }, error: function(xhr, status, error) {
+                        alert(xhr.responseJSON.msg || appErrorcode['error10']);
+                    }
+                });
+            }
+        </script> --}}
+        <script>
+            (function ($) {
+                "use strict";
+                $('.input100').each(function () {
+                    $(this).on('blur', function () {
+                        if ($(this).val().trim() != "") {
+                            $(this).addClass('has-val');
+                        } else {
+                            $(this).removeClass('has-val');
+                        }
+                    })
+                });
+                var showPass = 0;
+                $('.btn-show-pass').on('click', function () {
+                    if (showPass == 0) {
+                        $(this).next('input').attr('type', 'text');
+                        $(this).find('i').removeClass('zmdi-eye');
+                        $(this).find('i').addClass('zmdi-eye-off');
+                        showPass = 1;
+                    } else {
+                        $(this).next('input').attr('type', 'password');
+                        $(this).find('i').addClass('zmdi-eye');
+                        $(this).find('i').removeClass('zmdi-eye-off');
+                        showPass = 0;
+                    }
+                });
+            })(jQuery);
+        </script>
+    </body>
+</html>

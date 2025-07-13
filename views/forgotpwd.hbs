@@ -1,0 +1,350 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135230544-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-135230544-1',  { 'anonymize_ip': true });
+        </script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="img/favicon/favicon-16x16.png" type="image/png">
+
+
+        <link rel="stylesheet" href="/css/fonticons.css">
+        <link rel="stylesheet" href="/css/stylesheet.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+        <!--For Plugins external css-->
+        <link rel="stylesheet" href="/css/plugins.css" />
+
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/login.css">
+
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" href="/css/responsive.css" />
+
+    </head>
+    <body class="d-flex flex-column h-100">
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100" id="forgotpwdContainer">
+                    <form class="login100-form validate-form">
+                        {{!-- <span class="login100-form-title p-b-26">Welcome</span> --}}
+                        <span class="login100-form-title p-b-48">
+                            {{!-- <i class="zmdi zmdi-font"></i> --}}
+                            Fermynt
+                        </span>
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+                        <input class="input100" type="text" name="user_login" id="user_login" required>
+                        <span class="focus-input100 form-control-placeholder" data-placeholder="Email"></span>
+                    </div>
+                    <div class="alert alertMsgText1" style="display:none"></div>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button id='btnForgotPwd' class="login100-form-btn"><i class="fa fa-spinner fa-spin" id="btnLoading"  style="display: none"></i>&nbsp;&nbsp;Submit</button>
+                        </div>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button id='lnkSingIn' class="login100-form-btn lnkSingIn">&nbsp;&nbsp;Entrer</button>
+                        </div>
+                    </div>
+                    {{!-- <div class="text-center p-t-115">
+                        <span class="txt1">
+                        Don’t have an account?
+                        </span>
+                        <a class="txt2 pointer lnkSingIn" style="font-size: 1rem;">Sign In</a>
+                    </div> --}}
+                    </form>
+                </div> <!-- forgot contaioner ends here-->
+                <div class="wrap-login100" id="forgotpwdTextContainer" style="opacity:0;display:none">
+                    <span class="login100-form-title p-b-48">
+                        Fermynt
+                    </span>
+                    {{!-- Password reset link been sent to your registered email address. Please check in your inbox. --}}
+                    <div>
+                         Le lien de réinitialisation du mot de passe a été envoyé à votre adresse e-mail enregistrée.
+                    </div>
+                    <br/>
+                    <div>
+                        S'il vous plaît vérifier dans votre boîte de réception.
+                    </div>
+                </div>
+                <div class="wrap-login100" id="changepwdContainer" style="opacity:0;display:none">
+                    <form class="login100-form validate-form">
+                        {{!-- <span class="login100-form-title p-b-26">Welcome</span> --}}
+                        <span class="login100-form-title p-b-48">
+                            {{!-- <i class="zmdi zmdi-font"></i> --}}
+                            Fermynt
+                        </span>
+                        <div class="wrap-input100 validate-input changeMBt" data-validate="Last Name">
+                            <input class="input100" type="password" name="new_user_password" id="new_user_password" required>
+                            <label class="focus-input100 form-control-placeholder" data-placeholder="MOT DE PASSE *"></label>
+                        </div>
+                        <div class="wrap-input100 validate-input changeMBt" data-validate="Last Name">
+                            <input class="input100" type="password" name="new_user_password_confirm" id="new_user_password_confirm" required>
+                            <label class="focus-input100 form-control-placeholder" data-placeholder="CONFIRMEZ LE MOT DE PASSE *"></label>
+                        </div>
+                        <div class="alert alertMsgText1" style="display:none"></div>
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button id='btnChangePwd' class="login100-form-btn">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div> <!-- changepwd contaioner ends here-->
+                <div class="wrap-login100" id="changepwdContainerText" style="opacity:0;display:none">
+                    <span class="login100-form-title p-b-48">
+                        Fermynt
+                    </span>
+                    {{!-- Password has been changed successfully. . --}}
+                    <div>
+                         Le mot de passe a été changé avec succès.
+                    </div>
+                    <br/>
+                    <div class="txt1">
+                        <a class="txt2 pointer lnkSingIn" style="font-size: 1rem; ">Cliquez ici</a> pour vous connecter avec un nouveau mot de passe.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="btnPopup" data-toggle="modal" data-target="#myModal" style="display: none">
+            Open modal
+        </button>
+
+         <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                <h4 class="modal-title" id="modelTitle"></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body" id="modalMsg">
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnCloseModal" data-dismiss="modal">Ok</button>
+                </div>
+
+            </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container-fluid">
+                <p class="copyright text-center">
+                    <a href="https://termsfeed.com/privacy-policy/aea4db6907ef44383eb4b76f91cfc93f" target="_blank" alt="Privacy Policy"> Privacy Policy </a> &nbsp;|&nbsp;
+                    <a href="https://termsfeed.com/cookies-policy/fa83048ce1055200471400cdcf5c93c0" target="_blank" alt="Privacy Policy"> Cookies Policy </a><br/>
+                    Copyright  &copy; <script>document.write((new Date()).getFullYear())</script>  <a id="fermynt" href="https://www.fermynt.com">fermynt</a>, All rights reserved.
+                </p>
+            </div>
+        </footer>
+        <div id="fb-root"></div>
+        <!--Footer Ends-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.0/src/js.cookie.min.js"></script>
+        <script src="js/appconst.js"></script>
+        <script src="js/errorcode.js"></script>
+        <script>
+            $(document).ready(function() {
+                let token = $.urlParam('token');
+                let user_id = $.urlParam('userid');
+                $('.lnkSingIn').on('click', function(){
+                    window.location.href= "/?shopid="+$.getParam('shopid')+"&sub_id="+$.getParam('subid');
+                    return false;
+                });
+
+                if((!!token && token !== "undefined" && token !== "null") && (!!user_id && user_id !== "undefined" && user_id !== "null" )){
+                    $('#forgotpwdContainer').css('display','none');
+                    $('#forgotpwdContainer').animate({opacity: 0});
+                    $("#forgotpwdTextContainer").css('display','none');
+                    $('#forgotpwdTextContainer').animate({opacity: 0});
+                    $("#changepwdContainerText").css('display','none');
+                    $('#changepwdContainerText').animate({opacity: 0});
+                    $("#changepwdContainer").css('display','block');
+                    $('#changepwdContainer').animate({opacity: 1});
+                } else {
+                    // Do nothing
+                }
+
+                $('#btnForgotPwd').on('click', function(){
+                    forgotpwdService();
+                    return false;
+                });
+
+                $('#user_password').on("keypress", function(e) {
+                    if (e.keyCode === 13) {
+                        forgotpwdService();
+                        return false;
+                    }
+                });
+
+                $('#btnChangePwd').on('click', function(){
+                    changepwdService();
+                    return false;
+                });
+
+                $('#btnChangePwd').on("keypress", function(e) {
+                    if (e.keyCode == 13) {
+                        changepwdService();
+                        return false;
+                    }
+                });
+
+                function forgotpwdService() {
+                    if( $('#user_login').val()  === ''){
+                        alertMsgText1('Email obligatoire', 'alert-warning');
+                        $('#user_login').focus();
+                        return false;
+                    }
+                    const userObject ={
+                        email: $.trim($('#user_login').val()).toLowerCase(),
+                        channel: 'WEBSHOP'
+                    };
+                    $("#btnRegister").attr("disabled", "disabled");
+                    $('#btnLoading').css('display','inline-block');
+                    $.ajax({
+                        url: app.serverAPI + '/customer/forgotPasswordEmail',
+                        data: JSON.stringify(userObject),
+                        type: 'POST',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function(response){
+                            if(response.status === app.success){
+                                $('#forgotpwdContainer').css('display','none');
+                                $('#forgotpwdContainer').animate({opacity: 0});
+                                $("#forgotpwdTextContainer").css('display','block');
+                                $('#forgotpwdTextContainer').animate({opacity: 1});
+                            } else {
+                                alert(response.msg);
+                            }
+                            $("#btnRegister").removeAttr("disabled");
+                            $('#btnLoading').css('display','none');
+                        }, error: function(xhr, status, error) {
+                            $("#btnRegister").removeAttr("disabled");
+                            $('#btnLoading').css('display','none');
+                            let msg;
+                            if(!!xhr.responseJSON) {
+                                msg = xhr.responseJSON.msg;
+                            } else {
+                                msg = appErrorcode['error10'];
+                            }
+                            alert(msg);
+                        }
+                    });
+                }
+
+                function changepwdService(){
+                    if($('#new_user_password').val() === ''){
+                        $('#new_user_password').focus();
+                        alertMsgText1('Mot de passe obligatoire', 'alert-warning');
+                        return false;
+                    }
+                    if($('#new_user_password_confirm').val() === ''){
+                        $('#new_user_password_confirm').focus();
+                        alertMsgText1('Confirmez le mot de passe obligatoire', 'alert-warning');
+                        return false;
+                    }
+
+                    if($('#new_user_password').val() !== $('#new_user_password_confirm').val()) {
+                        $('#new_user_password').focus();
+                        alertMsgText1('Mot de passe et confirmer le mot de passe doit être identique', 'alert-warning');
+                        return false;
+                    }
+
+                    const userObject = {
+                        user_id: $.trim(user_id),
+                        password: $('#new_user_password').val(),
+                        channel: 'WEBSHOP',
+                        token: $.trim(token)
+                    };
+
+                    $.ajax({
+                        url: app.serverAPI + '/customer/changePassword',
+                        data: JSON.stringify(userObject),
+                        type: 'POST',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function(response){
+                            if(response.status === app.success){
+                                $("#changepwdContainerText").css('display','block');
+                                $('#changepwdContainerText').animate({opacity: 1});
+                                $("#changepwdContainer").css('display','none');
+                                $('#changepwdContainer').animate({opacity: 0});
+                            } else {
+                                alert(response.msg);
+                            }
+                        }, error: function(xhr, status, error) {
+                            let msg;
+                            if(!!xhr.responseJSON) {
+                                msg = xhr.responseJSON.msg;
+                            } else {
+                                msg = appErrorcode['error10'];
+                            }
+                            alert(msg);
+                        }
+                    });
+                }
+
+                function alertMsgText1(msg, className) {
+                    $('.alertMsgText1').css('display','block');
+                    $('.alertMsgText1').html(msg);
+                    $('.alertMsgText1').removeClass('alert-warning alert-success alert-info alert-danger').addClass(className);
+                }
+
+            });
+        </script>
+        <script>
+            (function ($) {
+                "use strict";
+                $('.input100').each(function () {
+                    $(this).on('blur', function () {
+                        if ($(this).val().trim() != "") {
+                            $(this).addClass('has-val');
+                        } else {
+                            $(this).removeClass('has-val');
+                        }
+                    })
+                });
+                var showPass = 0;
+                $('.btn-show-pass').on('click', function () {
+                    if (showPass == 0) {
+                        $(this).next('input').attr('type', 'text');
+                        $(this).find('i').removeClass('zmdi-eye');
+                        $(this).find('i').addClass('zmdi-eye-off');
+                        showPass = 1;
+                    } else {
+                        $(this).next('input').attr('type', 'password');
+                        $(this).find('i').addClass('zmdi-eye');
+                        $(this).find('i').removeClass('zmdi-eye-off');
+                        showPass = 0;
+                    }
+                });
+            })(jQuery);
+        </script>
+    </body>
+</html>

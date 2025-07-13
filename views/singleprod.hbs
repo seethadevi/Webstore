@@ -1,0 +1,339 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135230544-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-135230544-1',  { 'anonymize_ip': true });
+        </script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="img/favicon/favicon-16x16.png" type="image/png">
+
+
+        <link rel="stylesheet" href="/css/fonticons.css">
+        <link rel="stylesheet" href="/css/slider-pro.css">
+        <link rel="stylesheet" href="/css/stylesheet.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+        <!--For Plugins external css-->
+        <link rel="stylesheet" href="/css/plugins.css" />
+
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="/css/style.css">
+
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" href="/css/responsive.css" />
+
+    </head>
+    <body class="d-flex flex-column h-100">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="height:60px">
+            <button class="navbar-toggler" style="visibility: hidden;" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+             <a class="navbar-brand title" href="https://www.fermynt.com/" target="_blank">
+                <img src="/img/logo_new.png" height="50" alt="Fermynt"/>
+            </a>
+        </nav>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="row" style="margin-top:80px;margin-left: 10px;cursor: pointer;">
+            <span id="backtoCatelogue"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour au catalogue</span>
+        </div>
+        <!-- Service Section -->
+        <section>
+            <div class="row" style="margin-top:10px;margin-left: 7px;margin-right: 7px;">
+                {{!-- <div class="float-left">
+                    <img src="https://storage.googleapis.com/fermyntstorage/shop-1550301885779.png" id="eventTextImg" alt="Event Image" style="width:160px;">
+                </div>
+                <div class="float-right" style="    margin-top: 25px;color: #000;">
+                    <div style="display: block;margin-top: 50px;margin-bottom: 12px;font-weight: 600;font-size: 1.0rem;">Prix TTC         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="strProductPrice1" class="float-right"></span></div>
+                </div> --}}
+                <div class="col-6">
+                    <img src="" id="eventTextImg" alt="Event Image" style="width:160px;">
+                </div>
+                 <div class="col-6 my-auto text-right verysmallScreen" style="color: #000;">
+                    {{!-- <div style="font-weight: 600;font-size: 1.0rem;">Prix TTC&nbsp;&nbsp;&nbsp;&nbsp;<span id="strProductPrice1"></span></div> --}}
+                    <div id="eventDate"></div>
+                    <div id="eventAddr1"></div>
+                    <div id="eventAddr2"></div>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+            <div class="row" style="margin:15px 0">
+                <div class="col-12 text-center">
+                    <h4 id="strProductName"></h4>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+
+
+            <div class="row" style="margin:15px 7px;">
+                <div class="col-4 my-auto">
+                    <div class="imgContainer">
+                        <div class="imgSubContainer">
+                             <img src="" id="wineImage"  alt="Wine Image" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 my-auto">
+                     <div id="Additional_info"></div>
+                </div>
+            </div>
+
+            <div style="clear:both"></div>
+
+            <div class="row" style="margin:20px 10px">
+                <p id="strProductDesc"></p>
+            </div>
+         </section>
+
+        <!-- START SCROLL TO TOP  -->
+        <div class="scrollup">
+            <a href="#"><i class="fa fa-chevron-up"></i></a>
+        </div>
+
+        <!--Footer Starts-->
+        <footer>
+            <div class="container-fluid">
+                <p class="copyright text-center">
+                    <a href="https://termsfeed.com/privacy-policy/aea4db6907ef44383eb4b76f91cfc93f" target="_blank" alt="Privacy Policy"> Privacy Policy </a> &nbsp;|&nbsp;
+                    <a href="https://termsfeed.com/cookies-policy/fa83048ce1055200471400cdcf5c93c0" target="_blank" alt="Privacy Policy"> Cookies Policy </a><br/>
+                    Copyright  &copy; <script>document.write((new Date()).getFullYear())</script>  <a id="fermynt" href="https://www.fermynt.com">fermynt</a>, All rights reserved.
+                </p>
+            </div>
+        </footer>
+        <!--Footer Ends-->
+
+        <div id="overlay"></div>
+        <div id="ajaxLoading">
+            <img class="Loading_Image" src="/img/ajax-loader.gif">
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.0/src/js.cookie.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+        <script src="/js/appconst.js"></script>
+        <script src="/js/winespec.js"></script>
+
+        <script type="text/javascript">
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 600) {
+                    $('.scrollup').fadeIn('slow');
+                } else {
+                    $('.scrollup').fadeOut('slow');
+                }
+            });
+
+            $('.scrollup').click(function () {
+                $("html, body").animate({scrollTop: 0}, 1000);
+                return false;
+            });
+        </script>
+
+        <script>
+            $( document ).ajaxStart(function() {
+                $( "#overlay, #ajaxLoading" ).show();
+            });
+            $( document ).ajaxStop(function() {
+                $( "#overlay, #ajaxLoading" ).hide();
+            });
+            $(document).ready(function(){
+                let local_app_wine_other_keys = app_wine_other_keys;
+                let local_app_winespec = app_winespec;
+                let local_app_wine_symbal_list = app_wine_symbal_list;
+                let prod_id = !!$.urlParam('id') ? $.urlParam('id') : '';
+                let wh_prod_id = !!$.urlParam('wh_prod_id') ? $.urlParam('wh_prod_id') : '';
+                let pictureObject = {};
+                if((!!$.getParam('title') && $.getParam('title') !== "undefined" && $.getParam('title') !== "null") &&
+                (!!$.getParam('eventAddress1') && $.getParam('eventAddress1') !== "undefined" && $.getParam('eventAddress1') !== "null") &&
+                (!!$.getParam('eventAddress2') && $.getParam('eventAddress2') !== "undefined" && $.getParam('eventAddress2') !== "null")  &&
+                (!!$.getParam('eventDate') && $.getParam('eventDate') !== "undefined" && $.getParam('eventDate') !== "null") &&
+                (!!$.getParam('eventImage') && $.getParam('eventImage') !== "undefined" && $.getParam('eventImage') !== "null")){
+                    $(document).prop('title', $.getParam('title'));
+                    $(document).prop('title', $.getParam('title'));
+                    $('#eventDate').html($.getParam('eventDate'));
+                    $('#eventAddr1').html($.getParam('eventAddress1'));
+                    $('#eventAddr2').html($.getParam('eventAddress2'));
+                    $('#eventTextImg').attr('src', $.getParam('eventImage'));
+                } else {
+                    if(!!$.urlParam('shopid') && $.urlParam('shopid') !== undefined && $.urlParam('shopid') !== 'undefined') {
+                        $.ajax({
+                            url: app.serverAPI + '/shop/details/'+$.urlParam('shopid'),
+                            type: 'GET',
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            success: function(response){
+                                if(response.status === 'success'){
+                                    let eventName = (response.msg.name.toUpperCase()).replace(/AND/g, '&');
+                                    $(document).prop('title', eventName);
+                                    $.setParam('title', eventName);
+                                    const startDate = new Date(response.msg.startDate);
+                                    const endDate = new Date(response.msg.endDate);
+                                    moment.locale('fr');
+                                    $.setParam('eventDate',moment(startDate).format("Do") +" - " + moment(endDate).format("Do") +' '+ moment(endDate).format("MMM") + ' ' +moment(endDate).format("YYYY"));
+                                    $.setParam('eventAddress1', response.msg.address.address1);
+                                    $.setParam('eventAddress2', response.msg.address.city + ' '+ response.msg.address.zip);
+                                    if(!!response.msg.picture){
+                                        $.setParam('eventImage',response.msg.picture['sm']);
+                                    } else {
+                                        $.setParam('eventImage','');
+                                    }
+                                    $('#eventDate').html($.getParam('eventDate'));
+                                    $('#eventAddr1').html($.getParam('eventAddress1'));
+                                    $('#eventAddr2').html($.getParam('eventAddress2'));
+                                    if(!!$.getParam('eventImage')){
+                                         $('#eventTextImg').attr('src', $.getParam('eventImage'));
+                                    } else {
+                                         $('#eventTextImg').attr('src', app.DEFAULT_EVENT);
+                                    }
+                                }
+                            }, error: function(xhr, status, error) {
+                                alert(xhr.responseJSON.msg);
+                            }
+                        });
+                    } else {
+                        $('#eventDate').html('');
+                        $('#eventAddr1').html('');
+                        $('#eventAddr2').html('');
+                    }
+                }
+                if(!prod_id || !wh_prod_id){
+                   return false;
+                } else if(!!prod_id && !!wh_prod_id){
+                    getProductDetailWithId(wh_prod_id, prod_id);
+                }
+
+                $('#backtoCatelogue').click(function(e) {
+                    window.location.href= '/browseproducts?sub_id='+$.getParam('subid')+"&shopid="+$.urlParam('shopid');
+                    return false;
+                });
+
+                function getProductDetailWithId(wh_prod_id, prod_id){
+                    let url = app.serverAPI + '/warehouseProducts/'+wh_prod_id+'/product/'+prod_id;
+                    if(!!url){
+                        $.ajax({
+                            url: url,
+                            type: 'GET',
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            success: function(response){
+                                // console.log('Resp', response);
+                                // debugger;
+                                if(response.status === app.success) {
+                                    const data = response.msg;
+
+                                    /* if(data['logo'] !== undefined) {
+                                        $('#wineLogoImg').attr('src',data['logo']['md']);
+                                    } */
+                                    // debugger;
+                                    let imgUrl = '';
+                                    if(!!data['label'] && data['label'] !== undefined) {
+                                        imgUrl = data['label']['lg'];
+                                    } else if(!!data['picture'] && data['picture'] !== undefined) {
+                                        imgUrl = data['picture']['lg'];
+                                     } else if(!!data['logo'] && data['logo'] !== undefined) {
+                                        imgUrl = data['logo']['lg'];
+                                    } else {
+                                        imgUrl = app.DEFAULT_WINE_BOTTLE;
+                                     }
+                                     $('#wineImage').attr('src', imgUrl);
+                                     // Display the label image
+                                    /*if(!!data['label'] && data['label'] !== undefined) {
+                                        $('#wineImage').attr('src',data['logo']['lg']);
+                                        $('#wineImage').addClass('wineImageStyle').removeClass('winebottleStyle');
+                                    } else {
+                                        $('#wineImage').attr('src',app.DEFAULT_WINE_BOTTLE);
+                                        $('#wineImage').addClass('winebottleStyle').removeClass('wineImageStyle');
+                                    }*/
+                                    $('#strProductName').html($.trim(data.name) +' '+ $.trim(data.year));
+                                    if(!!data.pricing && !!data.pricing.price_w_vat){
+                                        // $('#strProductPrice1').html('<i class="fa fa-eur" aria-hidden="true"></i>  ' +parseFloat(data.pricing.price_w_vat).toFixed(2));
+                                    }
+                                    $('#strProductDesc').html(data.description);
+                                    //Add the Additinal Information here
+                                   /* let tableContent1 = '';
+                                    $.each(app_winespec, function (index,item) {
+                                        if(data[item.key_param] !== 'undefined') {
+                                            if(item.sub_key_param === '' && item.additinal_param === '' && !item.isArray ){
+                                                tableContent1  +=  '<p class="product_info_value1">'+data[item.key_param]+'</p>';
+                                            } else if (item.sub_key_param !== '' && item.additinal_param === '' && !item.isArray){
+                                                const obj = data[item.key_param];
+                                                tableContent1  +=  '<p class="product_info_value1">'+obj[item.sub_key_param]+'</p>';
+                                            } else if (item.sub_key_param !== '' && item.additinal_param !== '' && !item.isArray){
+                                                const obj = data[item.key_param];
+                                                const value = obj[item.sub_key_param];
+                                                tableContent1  +=  '<p class="product_info_value1">'+value[item.additinal_param] +'</p>';
+                                            } else if (item.sub_key_param !== '' && item.additinal_param === '' && !!item.isArray) {
+                                                const obj = data[item.key_param];
+                                                const value = obj.map(item => {
+                                                    return item.name;
+                                                });
+                                                if(!!value) {
+                                                    tableContent1  +=  '<p class="product_info_value1">'+value+'</p>';
+                                                }
+                                            }
+                                        }
+                                    });
+                                    $('#Additional_info').html(tableContent1);*/
+                                    $.ajax({
+                                    url: app.serverAPI + '/formData/categoryType/'+data.category_type.type,
+                                    type: 'GET',
+                                    headers: {
+                                        'Authorization': 'DWS-TOKEN '+$.getParam('auth'),
+                                        'channel':'WEB',
+                                    },
+                                    contentType: 'application/json; charset=utf-8',
+                                    dataType: 'json',
+                                    success: function(response1){
+                                        if(response1.status === 'success'){
+                                            let resp = response1.msg;
+                                            let listOfDisplayKey = [];
+                                            if(resp.std_form_component) {
+                                                listOfDisplayKey = resp.std_form_component.filter((item) => { return item.isDisplay === true });
+                                                //Add the Additinal Information here
+                                                let tableContent1 = '<p class="product_info_value1">'+data['winery']['name']+'</p>';
+                                                $.each(listOfDisplayKey, function (index,item) {
+                                                    let keyStr = item['key'];
+                                                    if(!!data['attr'][keyStr] && !!data['attr'][keyStr]['name']){
+                                                        tableContent1  +=  '<p class="product_info_value1">'+data['attr'][keyStr]['name']+'</p>';
+                                                    } else if(!!data['attr'][keyStr] && typeof(data['attr'][keyStr]) !== "object") {
+                                                        tableContent1  +=  '<p class="product_info_value1">'+data['attr'][keyStr]+'</p>';
+                                                    }
+                                                });
+                                                $('#Additional_info').html(tableContent1);
+                                            }
+                                        } else {
+                                            // do nothing
+                                        }
+                                    },  error: function(xhr, status, error) {
+                                        alert(xhr.responseJSON.msg || 'Error');
+                                    }
+                                    });
+                                }
+                            }, error: function(xhr, status, error) {
+                                alert(xhr.responseJSON.msg || 'Error');
+                            }
+
+                        });
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

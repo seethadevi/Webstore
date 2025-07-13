@@ -1,0 +1,375 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135230544-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-135230544-1',  { 'anonymize_ip': true });
+        </script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="img/favicon/favicon-16x16.png" type="image/png">
+
+
+        <link rel="stylesheet" href="/css/fonticons.css">
+        <link rel="stylesheet" href="/css/stylesheet.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="/css/style.css">
+
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" href="/css/responsive.css" />
+        <style>
+            .topSpace1{
+                margin-top: 10px;
+            }
+            .topSpace2{
+                margin-top: 70px;
+            }
+             .bold{
+                font-weight: bold;
+            }
+        </style>
+
+    </head>
+
+    <body class="d-flex flex-column h-100">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+            <button class="navbar-toggler" type="button" onclick="$.triggerNavAction();"  data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand title pointer" href="#">Fermynt</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/listofproducts">Des produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/userprofile">Mon profil</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/orders">Vos commandes<span class="sr-only">(current)</span></a>
+                    </li>
+                     <li class="nav-item" id="btnGoToShoppingCart1" style="display:none">
+                        <a class="nav-link" href="#">Mon panier <span class="badge badge-light" id="totalCartItem1"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="#" onclick="$.Logout();">Déconnexion</a>
+                    </li>
+                </ul>
+            </div>
+            <a class="navbar-band cart pointer" id="btnGoToShoppingCart">
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                <span class="badge badge-light" id="totalCartItem"></span>
+            </a>
+        </nav>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+       <div class="container topSpace2 mb-1 text-center">
+           <h5>votre liste de commandes</h5>
+       </div>
+
+       <div class="container topSpace1">
+           <ul class="list-group" id="userDetails">
+            </ul>
+       </div>
+
+
+        <!-- START SCROLL TO TOP  -->
+        <div class="scrollup">
+            <a href="#"><i class="fa fa-chevron-up"></i></a>
+        </div>
+
+        <!--Footer Starts-->
+        <footer>
+            <div class="container-fluid">
+                <p class="copyright text-center">
+                    <a href="https://termsfeed.com/privacy-policy/aea4db6907ef44383eb4b76f91cfc93f" target="_blank" alt="Privacy Policy"> Privacy Policy </a> &nbsp;|&nbsp;
+                    <a href="https://termsfeed.com/cookies-policy/fa83048ce1055200471400cdcf5c93c0" target="_blank" alt="Privacy Policy"> Cookies Policy </a><br/>
+                    Copyright  &copy; <script>document.write((new Date()).getFullYear())</script>  <a id="fermynt" href="https://www.fermynt.com">fermynt</a>, All rights reserved.
+                </p>
+            </div>
+        </footer>
+        <!--Footer Ends-->
+        <button type="button" class="btn btn-primary" id="btnPopup" data-toggle="modal" data-target="#myModal" style="display: none">
+            Open modal
+        </button>
+         <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                <h4 class="modal-title" id="modelTitle"></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body" id="modalMsg">
+                    <div id="qrcode" class='text-center topSpace1'></div>
+                    <!--Your order will expire sometime. please check out your order.-->
+                    <p class='text-center topSpace1 text-warning' id= "displayTimer">
+                        Votre commande expirera un jour. veuillez vérifier votre commande.
+                    </p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnCloseModal" data-dismiss="modal">Ok</button>
+                </div>
+
+            </div>
+            </div>
+        </div>
+
+        <div id="overlay"></div>
+        <div id="ajaxLoading">
+            <img class="Loading_Image" src="/img/ajax-loader.gif">
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.0/src/js.cookie.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+        <script src="js/jquery.qrcode.js"></script>
+        <script src="js/qrcode.js"></script>
+        <script src="/js/appconst.js"></script>
+        <script src="/js/winespec.js"></script>
+
+        <script type="text/javascript">
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 600) {
+                    $('.scrollup').fadeIn('slow');
+                } else {
+                    $('.scrollup').fadeOut('slow');
+                }
+            });
+
+            $('.scrollup').click(function () {
+                $("html, body").animate({scrollTop: 0}, 1000);
+                return false;
+            });
+        </script>
+
+        <script>
+
+            $(document).ready(function(){
+                 $( "#overlay, #ajaxLoading" ).hide();
+                let customer = !!$.getParam('customerid') ? $.getParam('customerid') : '';
+                if(!!customer){
+                    getCustomerOrder(customer);
+                } else {
+                    $.setParam('errorcode','error5');
+                    window.location.href = 'msg';
+                    return false;
+                }
+                moment.locale('fr');
+                const cartItems = !!$.getParam('cartItem') ? JSON.parse($.getParam('cartItem')): [];
+                if(cartItems.length === 0){
+                    $('#totalCartItem').html('0');
+                    $('#totalCartItem1').html('0');
+                } else {
+                    $('#totalCartItem').html(cartItems.length);
+                    $('#totalCartItem1').html(cartItems.length);
+                }
+                $('#btnGoToShoppingCart, #btnGoToShoppingCart1').on('click', function() {
+                    const cartItems = !!$.getParam('cartItem') ? JSON.parse($.getParam('cartItem')): [];
+                    if(cartItems.length === 0){
+                        return false;
+                    } else {
+                        window.location.href = 'cart';
+                    }
+                });
+
+                if((!!$.getParam('title') && $.getParam('title') !== "undefined" && $.getParam('title') !== "null") &&
+                (!!$.getParam('eventImage') && $.getParam('eventImage') !== "undefined" && $.getParam('eventImage') !== "null")){
+                     $(document).prop('title', $.getParam('title'));
+                     $('#eventTextImg').attr('src', $.getParam('eventImage'));
+                } else {
+                    if(!!$.getParam('shopid') && $.getParam('shopid') !== "undefined" && $.getParam('shopid') !== "null"){
+                        $.ajax({
+                            url: app.serverAPI + '/shop/details/'+$.getParam('shopid'),
+                            type: 'GET',
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            success: function(response){
+                                if(response.status === 'success'){
+                                    let eventName = (response.msg.name.toUpperCase()).replace(/AND/g, '&');
+                                    $(document).prop('title', eventName);
+                                    $.setParam('title', eventName);
+                                    if(!!response.msg.picture){
+                                        $.setParam('eventImage',response.msg.picture);
+                                    } else {
+                                        $.setParam('eventImage','');
+                                    }
+                                }
+                            }, error: function(xhr, status, error) {
+                                alert(xhr.responseJSON.msg);
+                            }
+                        });
+                    }
+                }
+
+                function getCustomerOrder(id){
+                    $( "#overlay, #ajaxLoading" ).show();
+                    $.ajax({
+                        url: app.serverAPI + '/order/customer',
+                        type: 'POST',
+                        data: JSON.stringify({customer_id:id}),
+                        headers: {
+                            'Authorization': 'DWS-TOKEN '+$.getParam('auth'),
+                            'channel':'WEB',
+                        },
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function(response){
+                           $( "#overlay, #ajaxLoading" ).hide();
+                            let htmlData = '';
+                            let data = response.res.docs;
+                             if( response.status === 'success') {
+                                htmlData = '<div class="list-group">';
+                                    if(!!data.length){
+                                        $.each(data, function (index,item) {
+                                            var orderDate = moment(item.createddate).format("Do MMM YYYY");
+                                            htmlData +='<a href="#" class="list-group-item list-group-item-action" >';
+                                            htmlData +='<div class="d-flex w-100 justify-content-between">';
+                                            // htmlData +='<h6 class="mb-1">Order #:'+item['orderId']+'</h6>';
+                                            htmlData +='<h6 class="mb-1" style="font-size:0.9rem">Date:  '+orderDate+'</h6>';
+                                            if(item['status'] === 'INCART') {
+                                               htmlData +='<small class="text-primary qrcodePopup" style="font-size: 1.5rem;" data-qrcode="'+item.orderId+'"><i class="fa fa-qrcode qrcodePopup" aria-hidden="true" data-qrcode="'+item.orderId+'"></i></small>';
+                                            } else if(item['status'] === 'SUCCESS') {
+                                                htmlData +='<small class="text-success">Success</small>';
+                                            } else if(item['status'] === 'EXPIRED') {
+                                                htmlData +='<small class="text-secondary">Expired</small>';
+                                                // htmlData +='<small class="text-primary qrcodePopup" style="font-size: 1.5rem;" data-qrcode="'+item.orderId+'"><i class="fa fa-qrcode qrcodePopup" aria-hidden="true" data-qrcode="'+item.orderId+'"></i></small>';
+                                            } else if(item['status'] === 'CANCELLED') {
+                                                htmlData +='<small class="text-info">Cancelled</small>';
+                                            } else {
+                                                htmlData +='<small class="text-danger">Failed</small>';
+                                            }
+                                            htmlData +='</div>';
+                                            if(item['status'] === 'INCART') {
+                                                htmlData +='<div class="d-flex w-100 justify-content-between">';
+                                            } else {
+                                                htmlData +='<div class="d-flex w-100 justify-content-between mt-2">';
+                                            }
+                                            htmlData +='<h6 class="mb-1" style="font-size:0.7rem">Prix ​​total: <i class="fa fa-eur" aria-hidden="true"></i> '+item.totalAmount+'</h6>';
+                                            htmlData +='<small style="font-size:0.7rem">Total d\'article: #'+item.orderItems.length+'</small>';
+                                            htmlData +='</div>';
+
+                                            if(item['status'] === 'SUCCESS') {
+                                                htmlData +='<div class="d-flex w-100 justify-content-between mt-2">';
+                                                htmlData +='<h6 class="mb-1" style="font-size:0.7rem">Card: **** '+item.cardLast4Digits+'</h6>';
+                                                if(!!item.cardType && item.cardType === "VISA"){
+                                                    htmlData +='<small><i style="font-size:0.9rem"  class="fa fa-cc-visa text-primary" aria-hidden="true"></i></small>';
+                                                } else if(!!item.cardType && item.cardType === "MASTERCARD"){
+                                                    htmlData +='<small><i style="font-size:0.9rem"  class="fa fa-cc-mastercard text-warning" aria-hidden="true"></i></small>';
+                                                } else {
+                                                    htmlData +='<small><i style="font-size:0.9rem"  class="fa fa-credit-card text-success" aria-hidden="true"></i></small>';
+                                                }
+                                                htmlData +='</div>';
+                                            }
+                                            // Product line items
+                                            htmlData +='<table class="table table-striped table-responsive hideClass">';
+                                            htmlData += '<thead style="font-size: 0.8rem">';
+                                            htmlData += '<tr>';
+                                            htmlData += '<td>#</td>';
+                                            htmlData += '<td>Produit</td>';
+                                            htmlData += '<td>Total</td>';
+                                            // htmlData += '<td>Prix</td>';
+                                            // htmlData += '<td>Total</td>';
+                                            htmlData += '</tr>';
+                                            htmlData += '</thead>';
+                                            htmlData += '<tbody style="font-size: 0.8rem">';
+                                            $.each(item.orderItems, function(index, Pitem) {
+                                                htmlData += '<tr>';
+                                                htmlData += '<td>'+(index+1)+'</td>';
+                                                htmlData += '<td>'+Pitem.name+'<br/> <span style="font-size: 0.7rem"><i class="fa fa-eur" aria-hidden="true"></i>'+Pitem.pricing.price_w_vat +' X '+ Pitem.qty +' (Taxes comprises '+Pitem.pricing.vat+'%)</span></td>';
+                                                //htmlData += '<td>'+Pitem.qty+'</td>';
+                                                // htmlData += '<td>'+Pitem.pricing.price_w_vat+'</td>';
+                                                htmlData += '<td class="bold">'+Pitem.totalAmount+'</td>';
+                                                htmlData += '</tr>';
+                                            });
+                                            htmlData += '</tbody>';
+                                            htmlData +='</table>';
+                                            htmlData +='</a>';
+                                        });
+                                    }
+                                htmlData += '</div>';
+                                $('#userDetails').html(htmlData);
+                                triggerClick();
+                            } else {
+                                alert(response.msg);
+                            }
+                        }, error: function(xhr, status, error) {
+                             $( "#overlay, #ajaxLoading" ).hide();
+                            alert(xhr.responseJSON.msg);
+                        }
+
+                    });
+                }
+
+                function triggerClick() {
+                    $('a.list-group-item').on('click', function(event) {
+                        let elem = event.target;
+                        let tableElem;
+                        if($(elem).hasClass('list-group-item')) {
+                            tableElem = $(elem).find('table');
+                        } else if(!!elem.parentElement && $(elem.parentElement).hasClass('list-group-item')) {
+                            tableElem = $(elem.parentElement).find('table');
+                        } else if(!!elem.parentElement.parentElement && $(elem.parentElement.parentElement).hasClass('list-group-item')) {
+                            tableElem = $(elem.parentElement.parentElement).find('table');
+                        } else if(!!elem.parentElement.parentElement.parentElement && $(elem.parentElement.parentElement.parentElement).hasClass('list-group-item')) {
+                            tableElem = $(elem.parentElement.parentElement.parentElement).find('table');
+                        }
+                        $(tableElem).toggleClass('hideClass');
+                        event.stopPropagation();
+                        event.preventDefault();
+                    });
+                    $('.qrcodePopup').on('click', function(event) {
+                        let elem = event.target;
+                        let qrcode;
+                         qrcode = $(elem).attr('data-qrcode');
+                         alertMsg('QR-Code', qrcode);
+                         event.stopPropagation();
+                    });
+                }
+
+
+                function alertMsg(title ,qrcode) {
+                    $('#qrcode').html('');
+                    if(!!title) {
+                        $('#modelTitle').html(title);
+                    } else {
+                        $('#modelTitle').html('Alerte');
+                    }
+                    jQuery('#qrcode').qrcode({
+                        width: 94,
+                        height: 94,
+                        text : qrcode
+                    });
+                    document.getElementById('btnPopup').click();
+                    setTimeout(function(){
+                        document.getElementById('btnCloseModal').click();
+                    }, 10000);
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,650 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135230544-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-135230544-1',  { 'anonymize_ip': true });
+        </script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="img/favicon/favicon-16x16.png" type="image/png">
+
+
+        <link rel="stylesheet" href="/css/fonticons.css">
+        <link rel="stylesheet" href="/css/slider-pro.css">
+        <link rel="stylesheet" href="/css/stylesheet.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+        <!--For Plugins external css-->
+        <link rel="stylesheet" href="/css/plugins.css" />
+
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="/css/style.css">
+
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" href="/css/responsive.css" />
+
+    </head>
+    <body class="d-flex flex-column h-100">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+            <button class="navbar-toggler" id="nav-mobile-icon" type="button" onclick="$.triggerNavAction();"  data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand title pointer" href="https://www.fermynt.com/" target="_blank">Fermynt</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" id="winemenu">
+                        <a class="nav-link" href="/listofproducts">Des produits</a>
+                    </li>
+                    <li class="nav-item" id="profilemenu">
+                        <a class="nav-link" href="/userprofile">Mon profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/orders">Vos commandes</a>
+                    </li>
+                    <li class="nav-item" id="btnGoToShoppingCart1" style="display:none">
+                        <a class="nav-link" href="#">Mon panier <span class="badge badge-light" id="totalCartItem1"></span></a>
+                    </li>
+                    <li class="nav-item" id="logoutmenu">
+                        <a class="nav-link"  href="#" onclick="$.Logout();">Déconnexion</a>
+                    </li>
+                </ul>
+            </div>
+            <a class="navbar-band cart pointer" id="btnGoToShoppingCart">
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                <span class="badge badge-light" id="totalCartItem"></span>
+            </a>
+        </nav>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="row" style="margin-top:70px;margin-left: 10px;cursor: pointer;">
+            <span id="backtoCatelogue"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour aux produits</span>
+        </div>
+        <!-- Service Section -->
+         <section>
+            <div style="margin-top:10px;margin-left: 7px;margin-right: 7px;" >
+                <div class="float-left">
+                    <img src="https://storage.googleapis.com/fermyntstorage/shop-1550301885779.png" id="eventTextImg" alt="Event Image" style="width:120px;">
+                </div>
+                <div class="float-right" style="    margin-top: 0;" id="rightSideInfo">
+                    <button class="btn btn-outline-success onProductCartAdd float-right" id='btnAddtoCart'><i class="fa fa-plus"></i>  Ajouter au panier</button>
+                    <div style="display: block;margin-top: 50px;margin-bottom: 12px;font-weight: 600;font-size: 1.0rem;"><span id="strPriceText"></span><span id="strProductPrice1" class="float-right"></span></div>
+                    <div class="input-group mb-3">
+                        <span style="font-weight: 600;font-size: 1.0rem;">Quantité &nbsp;</span>
+                        <div class="input-group-prepend pointer" >
+                            <span class="input-group-text" onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 1 ) result.value--;return false;">-</span>
+                        </div>
+                        <input type="text" readonly placeholder="Qty" aria-label="Qty" value=1 class="qty1" id="sst" style="border:1px solid #d4d4d4;">
+                        <div class="input-group-append pointer" onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst < 6) result.value++;return false;" >
+                            <span class="input-group-text">+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{!-- <div class="row" style="margin-top:70px;margin-left: 7px;margin-right: 7px;">
+                <div class="col-5">
+                    <img src="https://storage.googleapis.com/fermyntstorage/shop-1550301885779.png" id="eventTextImg" alt="Event Image" style="width:160px;">
+                </div>
+                <div class="col-7 my-auto text-right">
+                    <button class="btn btn-outline-success onProductCartAdd" id='btnAddtoCart'><i class="fa fa-plus"></i>  Ajouter au panier</button>
+                    <div style="display: block;margin-top: 12px;margin-bottom: 12px;font-weight: 600;font-size: 1.0rem;">Prix TTC &nbsp;&nbsp;&nbsp;<span id="strProductPrice1" class="float-right"></span></div>
+                    <div class="input-group mb-3">
+                        <span style="font-weight: 600;font-size: 1.0rem;">Quantité &nbsp;</span>
+                        <div class="input-group-prepend pointer" >
+                            <span class="input-group-text" onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;">-</span>
+                        </div>
+                        <input type="text" placeholder="Qty" aria-label="Qty" value=1 class="qty1" id="sst" style="border:1px solid #d4d4d4;">
+                        <div class="input-group-append pointer" onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" >
+                            <span class="input-group-text">+</span>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            <div style="clear:both"></div>
+            <div class="row" style="margin:15px 0">
+                <div class="col-12 text-center">
+                    <h4 id="strProductName"></h4>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+
+            <!-- <div style="margin:15px 7px">
+                <div class="float-left" style="    margin-left: 25px;">
+                    <img src="" id="wineImage" alt="Wine Image" style="width:100px;height:300px">
+                </div>
+                <div class="float-right" style="margin-top: 50px;margin-right: 50px;">
+                    <div id="Additional_info"></div>
+                </div>
+            </div>    -->
+
+            <div class="row" style="margin:15px 7px;">
+                <div class="col-4 my-auto">
+                    <div class="imgContainer">
+                        <div class="imgSubContainer">
+                             <img src="" id="wineImage"  alt="Wine Image" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 my-auto">
+                     <div id="Additional_info"></div>
+                </div>
+            </div>
+
+            <div style="clear:both"></div>
+
+            <div class="row" style="margin:20px 10px">
+                <p id="strProductDesc"></p>
+            </div>
+         </section>
+
+        <!-- START SCROLL TO TOP  -->
+        <div class="scrollup">
+            <a href="#"><i class="fa fa-chevron-up"></i></a>
+        </div>
+
+        <div id="snackbar"></div>
+        <!--Added to show cart update msg -->
+
+        <!--Footer Starts-->
+        <footer>
+            <div class="container-fluid">
+                <p class="copyright text-center">
+                    <a href="https://termsfeed.com/privacy-policy/aea4db6907ef44383eb4b76f91cfc93f" target="_blank" alt="Privacy Policy"> Privacy Policy </a> &nbsp;|&nbsp;
+                    <a href="https://termsfeed.com/cookies-policy/fa83048ce1055200471400cdcf5c93c0" target="_blank" alt="Privacy Policy"> Cookies Policy </a><br/>
+                    Copyright  &copy; <script>document.write((new Date()).getFullYear())</script>  <a id="fermynt" href="https://www.fermynt.com">fermynt</a>, All rights reserved.
+                </p>
+            </div>
+        </footer>
+        <!--Footer Ends-->
+
+        <div id="overlay"></div>
+        <div id="ajaxLoading">
+            <img class="Loading_Image" src="/img/ajax-loader.gif">
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.0/src/js.cookie.min.js"></script>
+        <script src="/js/appconst.js"></script>
+        <script src="/js/winespec.js"></script>
+
+        <script type="text/javascript">
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 600) {
+                    $('.scrollup').fadeIn('slow');
+                } else {
+                    $('.scrollup').fadeOut('slow');
+                }
+            });
+
+            $('.scrollup').click(function () {
+                $("html, body").animate({scrollTop: 0}, 1000);
+                return false;
+            });
+        </script>
+
+        <script>
+           /* $( document ).ajaxStart(function() {
+                $( "#overlay, #ajaxLoading" ).show();
+            });
+            $( document ).ajaxStop(function() {
+                $( "#overlay, #ajaxLoading" ).hide();
+            }); */
+            $(document).ready(function(){
+                $( "#overlay, #ajaxLoading" ).hide();
+                let local_app_wine_other_keys = app_wine_other_keys;
+                let local_app_winespec = app_winespec;
+                let local_app_wine_symbal_list = app_wine_symbal_list;
+                let prod_id = !!$.urlParam('id') ? $.urlParam('id') : '';
+                let serial_id = !!$.urlParam('uid') ? $.urlParam('uid') : '';
+                let shop_prod_id = !!$.urlParam('shop_prod_id') ? $.urlParam('shop_prod_id') : '';
+                let customer_id = !!$.getParam('customerid') ? $.getParam('customerid') : '';
+                let shop_id = !!$.getParam('shopid') ? $.getParam('shopid') : '';
+                let pictureObject = {};
+                let defaultParams = {
+                    page: 1,
+                    limit: 20,
+                    sort: -1, //Desc
+                    search: ''
+                };
+
+                /*if(!prod_id){
+                    const loc = window.location.href;
+                    const changeUrl = loc.replace('/product/','/product?');
+                    prod_id = urlParamCustom('id', changeUrl)
+                }*/
+
+                if(!!prod_id && (!customer_id || customer_id === undefined || customer_id === 'undefined')) {
+                    getProductDetailWithId('', '', prod_id );
+                } else if (!!prod_id && (!shop_id || shop_id === undefined || shop_id === 'undefined')){
+                    getProductDetailWithId('', '', prod_id );
+                } else if (!!prod_id && !!shop_prod_id && (!!customer_id && customer_id !== undefined && customer_id !== 'undefined')){
+                    updateCardItem();
+                    getSingleProductDetail();
+                } else if (!!prod_id && (!!shop_id && shop_id !== undefined && shop_id !== 'undefined') && (!!customer_id && customer_id !== undefined && customer_id !== 'undefined')){
+                    updateCardItem();
+                    getProductDetailWithId('', '', prod_id );
+                }else {
+                    window.location.href = '/error';
+                    return false;
+                }
+
+                /*function urlParamCustom(name, url) {
+                    var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                                      .exec(url);
+                    if (results == null) {
+                         return 0;
+                    }
+                    return results[1] || 0;
+                }*/
+
+                /*
+                else if (!!prod_id && (!!shop_id && shop_id !== undefined && shop_id !== 'undefined')){
+                    getProductDetailWithId('', '', prod_id ); }
+                */
+
+                if((!!$.getParam('title') && $.getParam('title') !== "undefined" && $.getParam('title') !== "null") &&
+                (!!$.getParam('eventImage') && $.getParam('eventImage') !== "undefined" && $.getParam('eventImage') !== "null")){
+                     $(document).prop('title', $.getParam('title'));
+                     $('#eventTextImg').attr('src', $.getParam('eventImage'));
+                } else {
+                    if(!!$.getParam('shopid') && $.getParam('shopid') !== "undefined" && $.getParam('shopid') !== "null"){
+                        $.ajax({
+                            url: app.serverAPI + '/shop/details/'+$.getParam('shopid'),
+                            type: 'GET',
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            success: function(response){
+                                if(response.status === 'success'){
+                                    let eventName = (response.msg.name.toUpperCase()).replace(/AND/g, '&');
+                                    $(document).prop('title', eventName);
+                                    $.setParam('title', eventName);
+                                    if(!!response.msg.picture){
+                                        $.setParam('eventImage',response.msg.picture['sm']);
+                                    } else {
+                                        $.setParam('eventImage','');
+                                    }
+
+                                    if(!!$.getParam('eventImage')){
+                                         $('#eventTextImg').attr('src', $.getParam('eventImage'));
+                                    } else {
+                                         $('#eventTextImg').attr('src', app.DEFAULT_EVENT);
+                                    }
+                                }
+                            }, error: function(xhr, status, error) {
+                                alert(xhr.responseJSON.msg);
+                            }
+                        });
+                    }
+                }
+
+                setTimeout(function(){
+                    if(!!serial_id && serial_id !== "undefined" && serial_id !== "null") {
+                        checkforgift();
+                    }
+                }, 3000);
+
+                function checkforgift() {
+                    $.ajax({
+                        url: app.serverAPI + '/gift',
+                        type: 'POST',
+                         data: JSON.stringify({serial_id: serial_id}),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function(resp){
+                            if( resp.status === 'success') {
+                                if(resp.msg.gift_status === 'YES') {
+                                    $.setParam('isWinner', resp.msg.gift_status);
+                                    window.location.href = '/gift';
+                                } else if(resp.msg.gift_status === 'NO') {
+                                    $.setParam('isWinner', resp.msg.gift_status);
+                                    window.location.href = '/gift';
+                                    // Handle page
+                                } else {
+                                    //Do nothing
+                                }
+                            }
+                    },  error: function(xhr, status, error) {
+                    }
+                    });
+                }
+
+                function updateCardItem() {
+                    const cartItems = !!$.getParam('cartItem') ? JSON.parse($.getParam('cartItem')): [];
+                    if(cartItems.length === 0){
+                        $('#totalCartItem').html('0');
+                        $('#totalCartItem1').html('0');
+                    } else {
+                        $('#totalCartItem').html(cartItems.length);
+                        $('#totalCartItem1').html(cartItems.length);
+                    }
+                }
+
+                $('#btnGoToShoppingCart, #btnGoToShoppingCart1').on('click', function() {
+                    const cartItems = !!$.getParam('cartItem') ? JSON.parse($.getParam('cartItem')): [];
+                    if(cartItems.length === 0){
+                        return false;
+                    } else {
+                        window.location.href = '/cart';
+                    }
+                });
+
+                $('#backtoCatelogue').on('click', function() {
+                    window.location.href = '/listofproducts';
+                    return false;
+                });
+                $('#btnAddtoCart').on('click', function(){
+                    if(!$.getParam('customerid')) {
+                        let url = '';
+                        if(!!$.getParam('shopid')){
+                           url = '/?shopid='+$.getParam('shopid');
+                        } else{
+                            url = '/';
+                        }
+                        $.setParam('redirectURLLogin', window.location.href);
+                        window.location.href = url;
+                        return false;
+                    } else if(!!$.getParam('customerid') && !!$.getParam('shopid')) {
+                        const productItem = {
+                            'name': $('#strProductName').html().trim(),
+                            'id': shop_prod_id,
+                            'prod_id': prod_id,
+                            'qty': $('#sst').val(),
+                            'picture':  pictureObject,
+                            'price': $('#strProductPrice1').html().replace('<i class="fa fa-eur" aria-hidden="true"></i>',''),
+                        };
+
+                        let cartItem = !!$.getParam('cartItem') ? $.getParam('cartItem') : [];
+                         let cartmsg;
+                        if(cartItem.length === 0){
+                            cartItem.push(productItem);
+                            cartmsg = productItem['name'] +' ajouté au panier.';// added to cart
+                        }else {
+                            cartItem = JSON.parse(cartItem);
+                            let findIndex = -1;
+                            $.each(cartItem, function (index,item) {
+                                if(item.id === productItem.id){
+                                    findIndex = index;
+                                }
+                            });
+                            if(findIndex !== -1){
+                                cartItem[findIndex]['qty'] = productItem['qty'];
+                                cartmsg = productItem['name'] +' ajouté au panier.';// added to cart
+                            }else {
+                                cartItem.push(productItem);
+                                cartmsg = productItem['name'] +' ajouté au panier.';// added to cart
+                            }
+                        }
+                        $.setParam('cartItem',JSON.stringify(cartItem));
+                        $.showPopupMsg(cartmsg);
+                        updateCardItem();
+                    } else{
+                        //to do
+                    }
+                });
+
+                function getProductDetailWithId(gtin, serial_id, prod_id){
+                    let url = app.serverAPI + '/shopInventory/serial/';
+
+                    if(gtin !== undefined && !!gtin) {
+                        url += gtin
+                    } else if (serial_id !== undefined && !!serial_id) {
+                        url += serial_id;
+                    }else{
+                        if(!!$.getParam('shopid') && !!$.getParam('customerid')){
+                            url = app.serverAPI+ '/cart/type/Wine/product/'+prod_id+'?shop_id='+$.getParam('shopid');
+                        } else {
+                            url = app.serverAPI+ '/cart/type/Wine/product/'+prod_id;
+                        }
+                    }
+
+                    if(!!url){
+                        $( "#overlay, #ajaxLoading" ).show();
+                        $.ajax({
+                            url: url,
+                            type: 'GET',
+                            headers: {
+                                'Authorization': 'DWS-TOKEN '+$.getParam('auth'),
+                                'channel':'WEB',
+                            },
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            success: function(response){
+                                // console.log('Resp', response);
+                                // debugger;
+                                if(response.status === app.success) {
+                                    const data = response.msg;
+
+                                    /*if(data['logo'] !== undefined) {
+                                        $('#wineLogoImg').attr('src',data['logo']['md']);
+                                    }
+                                    // Display the label image
+                                    if(!!data['label'] && data['label'] !== undefined) {
+                                        $('#wineImage').attr('src',data['label']['lg']);
+                                    } else {
+                                        $('#wineImage').attr('src',app.DEFAULT_WINE_BOTTLE);
+                                    }
+                                    // Update for the Cart image
+                                    if(!!data['picture'] && data['picture'] !== undefined) {
+                                        pictureObject = data['picture']['sm'];
+                                    } else {
+                                        pictureObject = app.DEFAULT_WINE_BOTTLE;
+                                    } */
+
+                                    let imgUrl = '';
+                                    if(!!data['label'] && data['label'] !== undefined) {
+                                        imgUrl = data['label']['lg'];
+                                        pictureObject =  data['label']['sm'];
+                                    } else if(!!data['picture'] && data['picture'] !== undefined) {
+                                        imgUrl = data['picture']['lg'];
+                                        pictureObject =  data['picture']['sm'];
+                                       //  $('#wineImage').addClass('winebottleStyle').removeClass('wineImageStyle');
+                                    } else if(!!data['logo'] && data['logo'] !== undefined) {
+                                        imgUrl = data['logo']['lg'];
+                                        pictureObject =  data['logo']['sm'];
+                                    } else {
+                                        imgUrl = app.DEFAULT_WINE_BOTTLE;
+                                        pictureObject = app.DEFAULT_WINE_BOTTLE;
+                                        // $('#wineImage').addClass('winebottleStyle').removeClass('wineImageStyle');
+                                    }
+                                    $('#wineImage').attr('src', imgUrl);
+
+                                    $('#strProductName').html(data.displayName);
+                                    if(!!data.pricing && !!data.pricing.price_w_vat){
+                                        $('#strProductPrice1').html('<i class="fa fa-eur" aria-hidden="true"></i>  ' +parseFloat(data.pricing.price_w_vat).toFixed(2));
+                                        $('#strPriceText').html('Prix TTC ');
+                                    } else {
+                                        $('#logoutmenu, #profilemenu, #btnGoToShoppingCart1, #winemenu').css('display','none');
+                                        $('#nav-mobile-icon').css('visibility', 'hidden');
+                                        $('#btnGoToShoppingCart').css('display', 'none');
+                                        $('#backtoCatelogue').css('display', 'none');
+                                        $('#strProductPrice1').html('');
+                                        $('#strPriceText').html('');
+                                        // $('#rightSideInfo').css('display', 'none');
+                                    }
+                                    $('#strProductDesc').html(data.description);
+
+                                    $.ajax({
+                                    url: app.serverAPI + '/formData/categoryType/'+data.category_type.type,
+                                    type: 'GET',
+                                    headers: {
+                                        'Authorization': 'DWS-TOKEN '+$.getParam('auth'),
+                                        'channel':'WEB',
+                                    },
+                                    contentType: 'application/json; charset=utf-8',
+                                    dataType: 'json',
+                                    success: function(response1){
+                                        if(response1.status === 'success'){
+                                            let resp = response1.msg;
+                                            let listOfDisplayKey = [];
+                                            if(resp.std_form_component) {
+                                                listOfDisplayKey = resp.std_form_component.filter((item) => { return item.isDisplay === true });
+                                                //Add the Additinal Information here
+                                                let tableContent1 = '<p class="product_info_value1">'+data['winery']['name']+'</p>';
+                                                $.each(listOfDisplayKey, function (index,item) {
+                                                    let keyStr = item['key'];
+                                                    if(!!data['attr'][keyStr] && !!data['attr'][keyStr]['name']){
+                                                        tableContent1  +=  '<p class="product_info_value1">'+data['attr'][keyStr]['name']+'</p>';
+                                                    } else if(!!data['attr'][keyStr] && typeof(data['attr'][keyStr]) !== "object") {
+                                                        tableContent1  +=  '<p class="product_info_value1">'+data['attr'][keyStr]+'</p>';
+                                                    }
+                                                    /*if(data[item.key_param] !== 'undefined') {
+                                                        if(item.sub_key_param === '' && item.additinal_param === '' && !item.isArray ){
+                                                            tableContent1  +=  '<p class="product_info_value1">'+data[item.key_param]+'</p>';
+                                                        } else if (item.sub_key_param !== '' && item.additinal_param === '' && !item.isArray){
+                                                            const obj = data[item.key_param];
+                                                            tableContent1  +=  '<p class="product_info_value1">'+obj[item.sub_key_param]+'</p>';
+                                                        } else if (item.sub_key_param !== '' && item.additinal_param !== '' && !item.isArray){
+                                                            const obj = data[item.key_param];
+                                                            const value = obj[item.sub_key_param];
+                                                            tableContent1  +=  '<p class="product_info_value1">'+value[item.additinal_param] +'</p>';
+                                                        } else if (item.sub_key_param !== '' && item.additinal_param === '' && !!item.isArray) {
+                                                            const obj = data[item.key_param];
+                                                            const value = obj.map(item => {
+                                                                return item.name;
+                                                            });
+                                                            if(!!value) {
+                                                                tableContent1  +=  '<p class="product_info_value1">'+value+'</p>';
+                                                            }
+                                                        }
+                                                    } */
+                                                });
+                                                $('#Additional_info').html(tableContent1);
+                                            }
+                                            $( "#overlay, #ajaxLoading" ).hide();
+                                        }
+                                    },  error: function(xhr, status, error) {
+                                        $( "#overlay, #ajaxLoading" ).hide();
+                                    }
+                                    });
+                                }
+                            }, error: function(xhr, status, error) {
+                                $( "#overlay, #ajaxLoading" ).hide();
+                                $.setParam('errorcode','error1');
+                                $.setParam('pagelink',window.location.href);
+                                window.location.href = '/msg';
+                            }
+
+                        });
+                    }
+                }
+
+                function getSingleProductDetail(){
+                    $( "#overlay, #ajaxLoading" ).show();
+                    $.ajax({
+                        url: app.serverAPI + '/shopProducts/'+shop_prod_id+'/product/'+prod_id,
+                        type: 'GET',
+                        headers: {
+                            'Authorization': 'DWS-TOKEN '+$.getParam('auth'),
+                            'channel':'WEB',
+                        },
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function(response){
+                            // console.log('Resp', response);
+                            if(response.status === app.success) {
+                                const data = response.msg;
+
+                                if(data['logo'] !== undefined) {
+                                    $('#wineLogoImg').attr('src',data['logo']['md']);
+                                }
+
+                                let imgUrl = '';
+                                if(!!data['label'] && data['label'] !== undefined) {
+                                    imgUrl = data['label']['lg'];
+                                } else if(!!data['picture'] && data['picture'] !== undefined) {
+                                    imgUrl = data['picture']['lg'];
+                                    } else if(!!data['logo'] && data['logo'] !== undefined) {
+                                    imgUrl = data['logo']['lg'];
+                                } else {
+                                    imgUrl = app.DEFAULT_WINE_BOTTLE;
+                                    }
+                                    $('#wineImage').attr('src', imgUrl);
+                                $('#strProductName').html(data.displayName);
+                                if(!!data.pricing && !!data.pricing.price_w_vat){
+                                    $('#strProductPrice1').html('<i class="fa fa-eur" aria-hidden="true"></i>' +parseFloat(data.pricing.price_w_vat).toFixed(2));
+                                }
+                                $('#strProductDesc').html(data.description);
+                                //Add the Additinal Information here
+                                $.ajax({
+                                    url: app.serverAPI + '/formData/category/'+data.category_type.type,
+                                    type: 'GET',
+                                    headers: {
+                                        'Authorization': 'DWS-TOKEN '+$.getParam('auth'),
+                                        'channel':'WEB',
+                                    },
+                                    contentType: 'application/json; charset=utf-8',
+                                    dataType: 'json',
+                                    success: function(response1){
+                                        if (response1.status === 'success') {
+                                            let resp = response1.msg;
+                                            let listOfDisplayKey = [];
+                                            if(resp.std_form_component) {
+                                                listOfDisplayKey = resp.std_form_component.filter((item) => { return item.isDisplay === true });
+                                                //Add the Additinal Information here
+                                                let tableContent1 = '<p class="product_info_value1">'+data['winery']['name']+'</p>';
+                                                $.each(listOfDisplayKey, function (index,item) {
+                                                    let keyStr = item['key'];
+                                                    if(!!data['attr'][keyStr] && !!data['attr'][keyStr]['name']){
+                                                        tableContent1  +=  '<p class="product_info_value1">'+data['attr'][keyStr]['name']+'</p>';
+                                                    } else if(!!data['attr'][keyStr] && typeof(data['attr'][keyStr]) !== "object") {
+                                                        tableContent1  +=  '<p class="product_info_value1">'+data['attr'][keyStr]+'</p>';
+                                                    }
+                                                    /*if(data[item.key_param] !== 'undefined') {
+                                                        if(item.sub_key_param === '' && item.additinal_param === '' && !item.isArray ){
+                                                            tableContent1  +=  '<p class="product_info_value1">'+data[item.key_param]+'</p>';
+                                                        } else if (item.sub_key_param !== '' && item.additinal_param === '' && !item.isArray){
+                                                            const obj = data[item.key_param];
+                                                            tableContent1  +=  '<p class="product_info_value1">'+obj[item.sub_key_param]+'</p>';
+                                                        } else if (item.sub_key_param !== '' && item.additinal_param !== '' && !item.isArray){
+                                                            const obj = data[item.key_param];
+                                                            const value = obj[item.sub_key_param];
+                                                            tableContent1  +=  '<p class="product_info_value1">'+value[item.additinal_param] +'</p>';
+                                                        } else if (item.sub_key_param !== '' && item.additinal_param === '' && !!item.isArray) {
+                                                            const obj = data[item.key_param];
+                                                            const value = obj.map(item => {
+                                                                return item.name;
+                                                            });
+                                                            if(!!value) {
+                                                                tableContent1  +=  '<p class="product_info_value1">'+value+'</p>';
+                                                            }
+                                                        }
+                                                    } */
+                                                });
+                                                $('#Additional_info').html(tableContent1);
+                                            }
+                                        }
+                                        $( "#overlay, #ajaxLoading" ).hide();
+                                    },  error: function(xhr, status, error) {
+                                        $( "#overlay, #ajaxLoading" ).hide();
+                                    }
+                                    });
+                            }
+                        }, error: function(xhr, status, error) {
+                            // alert(error);
+                            $( "#overlay, #ajaxLoading" ).hide();
+                            $.setParam('errorcode','error1');
+                            $.setParam('pagelink',window.location.href);
+                            window.location.href = '/msg';
+                        }
+
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>

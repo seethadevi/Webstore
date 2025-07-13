@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135230544-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-135230544-1',  { 'anonymize_ip': true });
+    </script>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Fermynt">
+    <meta name="keywords" content="Fermynt">
+
+    <title>{{title}}</title>
+
+    <!--// ICONS //-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--// BOOTSTRAP & Main //-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link href="/css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!--========================================
+
+           Preloader
+
+    ========================================-->
+
+    <div class="page-preloader">
+
+        <div class="spinner">
+
+            <div class="rect1"></div>
+
+            <div class="rect2"></div>
+
+            <div class="rect3"></div>
+
+            <div class="rect4"></div>
+
+            <div class="rect5"></div>
+
+        </div>
+
+    </div>
+
+    <!--========================================
+
+           Header
+
+    ========================================-->
+
+
+
+    <!--//** Navigation**//-->
+
+    <nav class="navbar navbar-default navbar-fixed white no-background bootsnav navbar-scrollspy" data-minus-value-desktop="60" data-minus-value-mobile="55" data-speed="1000" style="height:65px;">
+        {{!-- <div class="container"> --}}
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                {{!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <i class="fa fa-bars"></i>
+                </button> --}}
+                {{!-- <a class="navbar-brand title" href="#">
+                    <img src="img/logo.png" class="logo" alt="logo">
+                </a> --}}
+                 <a class="navbar-brand title" href="https://www.fermynt.com/" target="_blank">
+                    <img src="img/logo_new.png" height="50" alt="Fermynt"/>
+                </a>
+            </div>
+            <!-- End Header Navigation -->
+        {{!-- </div> --}}
+
+    </nav>
+
+
+
+    <!--//** Banner**//-->
+
+    <section id="home" style="background-repeat: no-repeat;background-position: center; background-size: cover;">
+
+        <div class="container">
+
+            <div class="row">
+
+                <!-- Introduction -->
+
+                <div class="col-lg-6 caption text-center" id="eventInfoContainer" >
+                    {{!-- style="background-repeat: no-repeat;background-position: center; background-size: cover;" --}}
+                    <div class="eventTextContainer">
+                        <img src="" id="eventTextImg" alt="Event Image">
+                        <div class="textBlock removeStyle">
+                            <h1 id="popupShopName" style="font-family: opensans; font-size:28px;"></h1>
+                            <h2 style="font-family: opensans; font-size:22px;">
+                                <span class="animated-text"></span>
+                                <span class="typed-cursor"></span>
+                            </h2>
+
+                            <a class="btn btn-green" href="" id="btnBrowse" style="width: 355px;">
+                                VOIR LE CATALOGUE
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sign Up -->
+
+                <div class="col-lg-5 ml-auto">
+                    <form class="signup-form">
+                        <h4 class="text-center">RESTER EN CONTACT</h4>
+                        <hr>
+
+                        <div class="form-group">
+                            <input id="new_user_firstname" type="text" class="form-control" placeholder="PRENOM*" required="required">
+                        </div>
+
+                        <div class="form-group">
+                            <input id="new_user_lastname" type="text" class="form-control" placeholder="NOM*" required="required">
+                        </div>
+
+                        <div class="form-group">
+                            <input id="new_user_email" type="email" class="form-control" placeholder="EMAIL*" required="required">
+                        </div>
+
+                        <div class="form-group">
+                            <input id="new_user_password" type="password" class="form-control" placeholder="MOT DE PASSE*" required="required">
+                        </div>
+                         <div class="form-group">
+                            <input id="new_user_password_confirm" type="password" class="form-control" placeholder="CONFIRMEZ LE MOT DE PASSE*" required="required">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="new_user_Checkbox1" style="    margin-top: 8px;">
+                                <label class="form-check-label" for="new_user_Checkbox1">J’accepte la
+                                        <a href="https://termsfeed.com/privacy-policy/aea4db6907ef44383eb4b76f91cfc93f" target="_blank">Politique de confidentialité</a>
+                                        et de <a href="https://termsfeed.com/cookies-policy/fa83048ce1055200471400cdcf5c93c0" target="_blank">cookies</a></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{!-- <ul style="    list-style: none;padding:0;margin-bottom: 0;">
+                                <li class="text-left">
+                                    <label for="checkid"  style="word-wrap:break-word;margin-bottom: 0;">
+                                        <input id="new_user_Checkbox1"  type="checkbox"  style="    margin-right: 10px;"/>
+                                        J’accepte la
+                                        <a href="https://termsfeed.com/privacy-policy/aea4db6907ef44383eb4b76f91cfc93f" target="_blank">Politique de confidentialité</a>
+                                        et de <a href="https://termsfeed.com/cookies-policy/fa83048ce1055200471400cdcf5c93c0" target="_blank">cookies</a>
+                                    </label>
+                                </li>
+                                <li class="text-left">
+                                    <label for="checkid"  style="word-wrap:break-word;margin-bottom: 0;">
+                                        <input id="new_user_Checkbox2"  type="checkbox"  style=" margin-right: 10px;"/>
+                                        J’accepte de recevoir des informations et actualités de fermynt et de ses partenaires
+                                    </label>
+                                </li>
+                            </ul> --}}
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="new_user_Checkbox2" style="    margin-top: 8px;">
+                                <label class="form-check-label" for="new_user_Checkbox2">J’accepte de recevoir des informations et actualités de fermynt et de ses partenaires</label>
+                            </div>
+                        </div>
+                        <div class="alert" id="alertMsgText" style="display:none"></div>
+                        <div class="form-group text-center">
+                            <button type="button" class="btn btn-green btn-block" id="btnRegister"><i class="fa fa-spinner fa-spin" id="btnLoading" style="display: none"></i> INSCRIVEZ VOUS</button>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" id="btnPopup" data-toggle="modal" data-target="#myModal" style="display: none">
+                            Open modal
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" id="modelTitle"></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body" id="modalMsg">
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="btnCloseModal" data-dismiss="modal">Ok</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+    <section id="contact" class="section-padding" style="margin-top:30px">
+
+        <div class="container">
+            <h2 id="popupShopName1" style="font-family: opensans;"></h2>
+            <p id="desciption"></p>
+        </div>
+
+        <!-- Contact Info -->
+
+        <div class="container contact-info">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="icon-box">
+                        <i class="material-icons">place</i>
+                        <h4>Adresse</h4>
+                        <p id="address"></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+                        <i class="material-icons">phone</i>
+                        <h4>Nous appeler</h4>
+                        <p id="shopMobile"></p>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+                        <i class="material-icons">email</i>
+                        <h4>Nous écrire</h4>
+                        <p id="shopEmail"></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Google Map -->
+
+        <div id="map"></div>
+    </section>
+
+
+    <footer>
+
+        <div class="container">
+        <div class="text-center">
+            <blockquote class="blockquote">
+                <p class="mb-0" style="font-size: 18px;">"L’ABUS D’ALCOOL EST DANGEREUX POUR LA SANTÉ. A CONSOMMER AVEC MODERATION."</p>
+            </blockquote>
+        </div>
+            <div class="row justify-content-center">
+                <div class="footer-caption text-center ">
+                     <hr>
+                    <ul class="liste-unstyled">
+                        <li><a href="https://www.facebook.com/fermynt"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/fermynt"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/fermynt"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://www.instagram.com/fermynt/"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                    <hr>
+                    <a href="https://termsfeed.com/privacy-policy/aea4db6907ef44383eb4b76f91cfc93f" target="_blank" alt="Privacy Policy" style="color:#fff"> Privacy Policy </a> &nbsp;|&nbsp;
+                    <a href="https://termsfeed.com/cookies-policy/fa83048ce1055200471400cdcf5c93c0" target="_blank" alt="Privacy Policy" style="color:#fff"> Cookies Policy </a><br/>
+                    <h5 class="pull-left">Copyright  &copy; <script>document.write((new Date()).getFullYear())</script>  <a id="fermynt" href="https://www.fermynt.com" style="color:#fff">fermynt</a>, All rights reserved.</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.0/src/js.cookie.min.js"></script>
+    <script src="js/appconst.js"></script>
+    <script src="/js/plugins/typed.js-master/typed.js-master/dist/typed.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcXYcLCgDYk9JKIs09kStkJ-eSkSrIJik&sensor=false"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+</html>

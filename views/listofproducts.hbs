@@ -1,0 +1,472 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135230544-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-135230544-1',  { 'anonymize_ip': true });
+        </script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="img/favicon/favicon-16x16.png" type="image/png">
+
+
+        <link rel="stylesheet" href="/css/fonticons.css">
+        <link rel="stylesheet" href="/css/stylesheet.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+        <!--For Plugins external css-->
+        <link rel="stylesheet" href="/css/plugins.css" />
+
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="/css/style.css">
+
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" href="/css/responsive.css" />
+
+    </head>
+    <body class="d-flex flex-column h-100">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+            <button class="navbar-toggler" onclick="$.triggerNavAction();" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand title pointer" href="https://www.fermynt.com/" target="_blank">Fermynt</a>
+            {{!-- <a class="navbar-brand title" href="https://www.fermynt.com/" target="_blank">
+                <img src="/img/logo_new_black.png" height="50" alt="Fermynt" />
+            </a> --}}
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/listofproducts">Des produits<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/userprofile">Mon profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/orders">Vos commandes</a>
+                    </li>
+                    <li class="nav-item" id="btnGoToShoppingCart1" style="display:none">
+                        <a class="nav-link" href="#">Mon panier <span class="badge badge-light" id="totalCartItem1"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="#" onclick="$.Logout();">Déconnexion</a>
+                    </li>
+                </ul>
+            </div>
+            <a class="navbar-band cart pointer" id="btnGoToShoppingCart">
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                <span class="badge badge-light" id="totalCartItem"></span>
+            </a>
+        </nav>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- Search Text box -->
+        <div class="container topSpace">
+            <div class="row justify-content-center">
+                <div class="col-9">
+                    <div class="input-group mb-3">
+                        <input type="text" id='txtSearchProduct' class="form-control" aria-label="Search Products" placeholder="Rechercher">
+                        <div class="input-group-append">
+                            <span  id='btnSearchProduct' class="input-group-text">&nbsp;<i class="fa fa-search" aria-hidden="true"></i>&nbsp;</span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-3 verysmallScreen" style="padding-top:5px;">
+                     <span class="listgridIcon" id="lnkGridView"><i class="fa fa-th-large" aria-hidden="true"></i></span> &nbsp; | &nbsp; <span class="listgridIcon" id="lnkListView"><i class="fa fa-th-list" aria-hidden="true"></i></span>
+                 </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div id="listOfProductRow">
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <button class="btn btn-outline-success" id="btnLoadMoreProd">Load more products</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <p class="text-center" id="errorMsgOfprod"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- START SCROLL TO TOP  -->
+        <div class="scrollup">
+            <a href="#"><i class="fa fa-chevron-up"></i></a>
+        </div>
+
+        <div id="snackbar"></div>
+        <!--Added to show cart update msg -->
+        <!--Footer Starts-->
+        <footer>
+            <div class="container-fluid">
+                <p class="copyright text-center">
+                    <a href="https://termsfeed.com/privacy-policy/aea4db6907ef44383eb4b76f91cfc93f" target="_blank" alt="Privacy Policy"> Privacy Policy </a> &nbsp;|&nbsp;
+                    <a href="https://termsfeed.com/cookies-policy/fa83048ce1055200471400cdcf5c93c0" target="_blank" alt="Privacy Policy"> Cookies Policy </a><br/>
+                    Copyright  &copy; <script>document.write((new Date()).getFullYear())</script>  <a id="fermynt" href="https://www.fermynt.com">fermynt</a>, All rights reserved.
+                </p>
+            </div>
+        </footer>
+        <!--Footer Ends-->
+
+        <div id="overlay"></div>
+        <div id="ajaxLoading">
+            <img class="Loading_Image" src="/img/ajax-loader.gif">
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.0/src/js.cookie.min.js"></script>
+        <script src="/js/appconst.js"></script>
+        <script src="/js/winespec.js"></script>
+
+        <script type="text/javascript">
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 600) {
+                    $('.scrollup').fadeIn('slow');
+                } else {
+                    $('.scrollup').fadeOut('slow');
+                }
+            });
+
+            $('.scrollup').click(function () {
+                $("html, body").animate({scrollTop: 0}, 1000);
+                return false;
+            });
+        </script>
+
+        <script>
+            $( document ).ajaxStart(function() {
+                $( "#overlay, #ajaxLoading" ).show();
+            });
+            $( document ).ajaxStop(function() {
+                $( "#overlay, #ajaxLoading" ).hide();
+            });
+            $(document).ready(function(){
+                let totalProductCount = 0;
+                let no_of_wine_per_page = 30;
+                let total_no_of_page = 0;
+                let current_page = 1;
+                let defaultParams = {
+                    page: current_page,
+                    limit: no_of_wine_per_page,
+                    search: '',
+                    name: '',
+                    sort: {"aisle_order": 1}
+                };
+
+                let listOfProducts = [];
+                let shopId = $.getParam('shopid');
+                let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                if(isMobile) {
+                     $.setParam('viewtype', 'LIST');
+                } else {
+                     $.setParam('viewtype', 'GRID');
+                }
+                if(!shopId || shopId === "undefined" || shopId === "null") {
+                    $.setParam('errorcode','error2');
+                    window.location.href = 'msg';
+                    return false;
+                } else {
+                    defaultParams = Object.assign({}, defaultParams, {search : {'$and' :[{ 'shop_id' : { '$eq' : shopId } } ,
+                         {stock_availability: { $gt : 0 }} ]}});
+                    const cartItems = !!$.getParam('cartItem') ? JSON.parse($.getParam('cartItem')): [];
+                    if(cartItems.length === 0){
+                        $('#totalCartItem').html('0');
+                        $('#totalCartItem1').html('0');
+                    } else {
+                        $('#totalCartItem').html(cartItems.length);
+                        $('#totalCartItem1').html(cartItems.length);
+                    }
+                    getListOfProduct(defaultParams, $.getParam('viewtype'));
+                }
+
+                if((!!$.getParam('title') && $.getParam('title') !== "undefined" && $.getParam('title') !== "null") &&
+                (!!$.getParam('eventImage') && $.getParam('eventImage') !== "undefined" && $.getParam('eventImage') !== "null")){
+                     $(document).prop('title', $.getParam('title'));
+                } else {
+                    if(!!$.getParam('shopid') && $.getParam('shopid') !== "undefined" && $.getParam('shopid') !== "null"){
+                        $.ajax({
+                            url: app.serverAPI + '/shop/details/'+$.getParam('shopid'),
+                            type: 'GET',
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            success: function(response){
+                                if(response.status === 'success'){
+                                    let eventName = (response.msg.name.toUpperCase()).replace(/AND/g, '&');
+                                    $(document).prop('title', eventName);
+                                    $.setParam('title', eventName);
+                                    if(!!response.msg.picture){
+                                        $.setParam('eventImage',response.msg.picture['sm']);
+                                    } else {
+                                        $.setParam('eventImage','');
+                                    }
+                                }
+                            }, error: function(xhr, status, error) {
+                               let msg = '';
+                                if(xhr.responseJSON) {
+                                    msg = xhr.responseJSON.msg;
+                                } else {
+                                    msg = appErrorcode['error10'];
+                                }
+                                alert(msg);
+                            }
+                        });
+                    }
+                }
+
+                $('#btnLoadMoreProd').on('click', function() {
+                    if (current_page < total_no_of_page) {
+                        current_page ++;
+                        displayViewItem();
+                    }
+                });
+
+                $('#txtSearchProduct').on("keypress", function(e) {
+                    if (e.keyCode == 13) {
+                        // TODO AJAX call of search
+                        // alert('here');
+                        current_page = 1;
+                        displayViewItem();
+                        return false; // prevent the button click from happening
+                    }
+                });
+
+                $('#btnSearchProduct').on('click', function(e) {
+                    displayViewItem();
+                    current_page = 1;
+                    return false;
+                });
+
+                $('#lnkGridView').on('click', function(e) {
+                    $.setParam('viewtype', 'GRID');
+                    current_page = 1;
+                    displayViewItem();
+                    return false;
+                });
+
+                $('#lnkListView').on('click', function(e) {
+                    $.setParam('viewtype', 'LIST');
+                    current_page = 1;
+                    displayViewItem();
+                    return false;
+                });
+
+                function displayViewItem() {
+                    defaultParams = {
+                        page: current_page,
+                        limit: no_of_wine_per_page,
+                        sort: {"aisle_order": 1},
+                        search: ''
+                    };
+                    if($.trim($("#txtSearchProduct").val()) === ''){
+                        defaultParams = Object.assign({}, defaultParams, {search : {'$and' :[{ 'shop_id' : { '$eq' : shopId } } ,
+                         {stock_availability: { $gt : 0 }} ]}});
+                    }else {
+                        defaultParams = Object.assign({}, defaultParams, {search: {
+                            '$and' :[{ 'shop_id' : { '$eq' : shopId } } ,{stock_availability: { $gt : 0 }} ],
+                            '$or' : [{ 'name' : {'$regex': '.*' + $("#txtSearchProduct").val() + '.*', '$options' : 'i'} },
+                                    {'producer.name' : {'$regex': '.*' + $("#txtSearchProduct").val() + '.*', '$options' : 'i'} },
+                                    {'attr.region.name' : {'$regex': '.*' + $("#txtSearchProduct").val() + '.*', '$options' : 'i'}}]}
+                        });
+                    }
+                     getListOfProduct(defaultParams, $.getParam('viewtype'));
+                }
+
+                $('#btnGoToShoppingCart, #btnGoToShoppingCart1').on('click', function() {
+                    const cartItems = !!$.getParam('cartItem') ? JSON.parse($.getParam('cartItem')): [];
+                    if(cartItems.length === 0){
+                        return false;
+                    } else {
+                        window.location.href = 'cart';
+                    }
+                });
+
+                function getListOfProduct(currentParam,viewType) {
+                    $.ajax({
+                        url: app.serverAPI + '/shopProducts/search',
+                        data: JSON.stringify(currentParam),
+                        type: 'POST',
+                        headers: {
+                            'Authorization': 'DWS-TOKEN '+$.getParam('auth'),
+                            'channel':'WEB',
+                        },
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function(response){
+                            // console.log('Resp', response);
+                            listOfProducts = response.res.docs;
+                            totalProductCount = response.res.total;
+                            total_no_of_page =  Math.ceil( totalProductCount / no_of_wine_per_page );
+                            if (total_no_of_page === currentParam.page || totalProductCount === 0) {
+                                $('#btnLoadMoreProd').hide();
+                            } else {
+                                $('#btnLoadMoreProd').show();
+                            }
+                            if(!!listOfProducts.length) {
+                                let strHtml = '';
+                                if ( viewType === 'GRID'){
+                                    strHtml = '<div class="row">';
+                                    $.each(listOfProducts, function (index,item) {
+                                        strHtml += '<div class="col-6 col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 product onProductTitleclass pointer" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">';
+                                        strHtml += '<div class="f_p_item1 onProductTitleclass" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">';
+                                        strHtml += '<div class="f_p_img onProductTitleclass" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">';
+                                        if(!!item.picture) {
+                                            strHtml += '<img class="img-fluid winebottleStyle" src="'+item.picture.md+'" alt="'+item.name+'" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">';
+                                        } else {
+                                            strHtml += '<img class="img-fluid winebottleStyle" src="'+app.DEFAULT_WINE_BOTTLE+'" alt="'+item.name+'" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">';
+                                        }
+                                        strHtml += '</div>';
+                                        strHtml += '<div class="p_icon">'
+                                        if(!!item.picture) {
+                                            strHtml += '<a href="" title="Ajouter au panier" class="onProductCartAdd" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'" data-name ="'+item.name+'" data-picture ="'+item.picture.sm+'" data-price ="'+item.pricing.price_w_vat+'">';
+                                            strHtml += '<img src="./img/shopping-cart.png" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'" data-prodId="'+item.prod_id+'" data-name ="'+item.name+'" data-picture ="'+item.picture.sm+'" data-price ="'+item.pricing.price_w_vat+'" /></a>';
+                                        } else {
+                                            strHtml += '<a href="" title="Ajouter au panier" class="onProductCartAdd" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'" data-name ="'+item.name+'" data-picture ="'+app.DEFAULT_WINE_BOTTLE+'" data-price ="'+item.pricing.price_w_vat+'">';
+                                            strHtml += '<img src="./img/shopping-cart.png" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'" data-prodId="'+item.prod_id+'" data-name ="'+item.name+'" data-picture ="'+app.DEFAULT_WINE_BOTTLE+'" data-price ="'+item.pricing.price_w_vat+'" /></a>';
+                                        }
+                                        strHtml += '</div>';
+                                        strHtml += '<div class="product_name text-center" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">'+item.name+'</div>';
+                                        if(!!item.producer){
+                                            strHtml += '<div class="producer_name text-center" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">'+item.producer.name+'</div>';
+                                        }
+                                        strHtml += '<h6 class="onProductTitleclass product_price text-center"  data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'"><i class="fa fa-eur onProductTitleclass" aria-hidden="true" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'"></i>  '+item.pricing.price_w_vat.toFixed(2)+'</h6>';
+                                        strHtml += '</div>';
+                                        strHtml += '</div>';
+
+                                        if((currentParam.page === 1) && (index === listOfProducts.length-1)){
+                                            strHtml += '</div>'; // End of the row
+                                            $('#listOfProductRow').html(strHtml);
+                                            onClickofProductList();
+                                        } else if((currentParam.page !== 1) && (index === listOfProducts.length-1)){
+                                            $('#listOfProductRow').append(strHtml);
+                                            onClickofProductList();
+                                        }
+                                        $("#errorMsgOfprod").html('');
+                                    });
+                                } else {
+                                    $.each(listOfProducts, function (index,item) {
+                                        strHtml +='<div class="row productRow product onProductTitleclass pointer" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">';
+                                        strHtml +='<div class="col-8 product onProductTitleclass pointer" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">';
+                                        strHtml += '<div class="product_name1" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">'+item.name+'</div>';
+                                        if(!!item.producer){
+                                            strHtml += '<div class="producer_name" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">'+item.producer.name+'</div>';
+                                        }
+                                        strHtml += '<h5 class="onProductTitleclass product_price1" style="padding:0" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'"><i class="fa fa-eur" aria-hidden="true" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'"></i>  '+item.pricing.price_w_vat.toFixed(2)+'</h5>';
+                                        strHtml += '<button data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'" data-name ="'+item.name+'" data-picture ="'+item.picture.sm+'" data-price ="'+item.pricing.price_w_vat+'" class="btn btn-outline-success onProductCartAdd"><i class="fa fa-plus"></i>  Ajouter au panier</button>'
+                                        strHtml += '</div>';
+                                        strHtml +='<div class="col-4 f_p_img_list product onProductTitleclass pointer" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">';
+                                        if(!! item.picture) {
+                                            strHtml += '<img class="img-fluid" src="'+item.picture.md+'" alt="'+item.name+'" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">';
+                                        } else {
+                                            strHtml += '<img class="img-fluid" src="'+app.DEFAULT_WINE_BOTTLE+'" width="60" height="180" alt="'+item.name+'" data-shopProdId="'+item._id+'" data-prodId="'+item.prod_id+'">';
+                                        }
+                                        strHtml += '</div>';
+                                        strHtml += '</div>';
+                                        if((currentParam.page === 1) && (index === listOfProducts.length-1)){
+                                            $('#listOfProductRow').html(strHtml);
+                                            onClickofProductList();
+                                        } else if((currentParam.page !== 1) && (index === listOfProducts.length-1)){
+                                            $('#listOfProductRow').append(strHtml);
+                                            onClickofProductList();
+                                        }
+                                        $("#errorMsgOfprod").html('');
+                                    });
+                                }
+                            } else {
+                                if($.trim($("#txtSearchProduct").val()) === ''){
+                                    // No product found.
+                                    $("#errorMsgOfprod").html('Aucun produit trouvé');
+                                } else {
+                                    // Please refine your query and try again
+                                    $("#errorMsgOfprod").html('Veuillez affiner votre requête et réessayer.');
+                                }
+                                $('#listOfProductRow').html('');
+                            }
+                        }, error: function(xhr, status, error) {
+                            // alert(error);
+                            $.setParam('errorcode','error1');
+                            $.setParam('pagelink',window.location.href);
+                            window.location.href = 'msg';
+                        }
+
+                    });
+                };
+
+                function onClickofProductList(){
+                    $('.onProductTitleclass').on('click', function(event) {
+                        const prod_id = event.target.getAttribute('data-prodId');
+                        const shop_prod_id = event.target.getAttribute('data-shopProdId');
+                        console.log('prod_id',prod_id,'shop_prod_id',shop_prod_id );
+                        window.location.href='./product?shop_prod_id='+shop_prod_id+'&id='+prod_id;
+                    });
+                    $('.onProductCartAdd').on('click', function(event) {
+                        const productItem = {
+                            'name': event.target.getAttribute('data-name'),
+                            'id': event.target.getAttribute('data-shopProdId'),
+                            'prod_id': event.target.getAttribute('data-prodId'),
+                            'qty': 1,
+                            'picture':  event.target.getAttribute('data-picture'),
+                            'price': event.target.getAttribute('data-price')
+                        };
+                        let cartItem = !!$.getParam('cartItem') ? $.getParam('cartItem') : [];
+                        let cartmsg;
+                        if(cartItem.length === 0){
+                            cartItem.push(productItem);
+                            cartmsg = productItem['name'] +' ajouté au panier.';// added to cart
+                        }else {
+                            cartItem = JSON.parse(cartItem);
+                            let findIndex = -1;
+                            $.each(cartItem, function (index,item) {
+                                if(item.id === productItem.id){
+                                    findIndex = index;
+                                }
+                            });
+                            if(findIndex !== -1){
+                                if(parseInt(cartItem[findIndex]['qty']) < 6) {
+                                    cartItem[findIndex]['qty'] = parseInt(cartItem[findIndex]['qty']) + 1;
+                                    cartmsg = productItem['name'] +' ajouté au panier.';// added to cart
+                                } else {
+                                    cartmsg = 'Maximum 6 quantité par produit'; //'Maxium 6 quantity per product.';
+                                }
+                            }else {
+                                cartItem.push(productItem);
+                                cartmsg = productItem['name'] +' ajouté au panier.';// added to cart
+                            }
+                        }
+                        $.setParam('cartItem',JSON.stringify(cartItem));
+                        const cartItems = !!$.getParam('cartItem') ? JSON.parse($.getParam('cartItem')): [];
+                        if(cartItems.length === 0){
+                            $('#totalCartItem').html('0');
+                            $('#totalCartItem1').html('0');
+                        } else {
+                            $('#totalCartItem').html(cartItems.length);
+                            $('#totalCartItem1').html(cartItems.length);
+                        }
+                        $.showPopupMsg(cartmsg);
+                        event.stopPropagation();
+                        return false;
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>
